@@ -12,7 +12,9 @@
     <div class="mt-2">
       <select id={{$name}} name={{$name}} {{ $attributes }}class="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 ">
         @foreach ($options as $key => $value)
-            <option value="{{ $key }}" @selected(old($name) == $key ?? $value == $key)>
+            <option value="{{ $key }}" @if ($key == old($name) or $key == $value)
+                selected
+            @endif>
                 {{ $value }}
             </option>
         @endforeach

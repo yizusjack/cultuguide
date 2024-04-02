@@ -19,6 +19,7 @@ class Lugar extends Model
         'descripcion',
         'latitud',
         'longitud',
+        'direccion',
         'municipios_id',
     ];
 

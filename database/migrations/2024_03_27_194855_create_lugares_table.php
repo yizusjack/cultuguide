@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('lugares', function (Blueprint $table) {
             $table->id();
             $table->text('nombre');
-            $table->text('descripción');
+            $table->text('descripcion');
             $table->float('latitud', 8, 6);
             $table->float('longitud', 9, 6);
-            $table->text('dirección');
+            $table->text('direccion');
             $table->foreignId('municipios_id')->constrained();
             $table->timestamps();
         });

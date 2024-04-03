@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Lugar;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
 
 class LugarController extends Controller
@@ -12,7 +14,7 @@ class LugarController extends Controller
      */
     public function index()
     {
-        //
+        dd("Suena la alarma, seré furiosa");
     }
 
     /**
@@ -20,7 +22,9 @@ class LugarController extends Controller
      */
     public function create()
     {
-        //
+        $municipios = Municipio::all();
+
+        return view('lugares.create', compact('municipios'));
     }
 
     /**
@@ -28,7 +32,18 @@ class LugarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+            'descripcion' => ['required'],
+            'latitud' => ['required', 'min:-90', 'max:90', 'decimal:0,6'],
+            'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
+            'direccion' => ['required'],
+            'municipios_id' => ['required', 'exists:municipios,id'],
+        ]);
+
+        Lugar::create($request->all());
+
+        return redirect()->route('lugar.index');
     }
 
     /**
@@ -36,7 +51,7 @@ class LugarController extends Controller
      */
     public function show(Lugar $lugar)
     {
-        //
+        return view('lugares.show', compact('lugar'));
     }
 
     /**
@@ -44,7 +59,9 @@ class LugarController extends Controller
      */
     public function edit(Lugar $lugar)
     {
-        //
+        $municipios = Municipio::all();
+
+        return view('lugares.edit', compact('lugar', 'municipios'));
     }
 
     /**
@@ -52,7 +69,19 @@ class LugarController extends Controller
      */
     public function update(Request $request, Lugar $lugar)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+            'descripcion' => ['required'],
+            'latitud' => ['required', 'min:-90', 'max:90', 'decimal:0,6'],
+            'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
+            'direccion' => ['required'],
+            'municipios_id' => ['required', 'exists:municipios,id'],
+        ]);
+        
+        $lugar->update($request->except('_token', '_method'));
+        
+        return redirect()->route('lugar.index');
+
     }
 
     /**

@@ -18,7 +18,7 @@ class select extends Component
         public Collection|array $options,
         public string $attributeName,
         public string|null $placeholder=null,
-        public string|null $value=null,
+        public string|null $selected=null,
     )
     {
         $options = $this->options->pluck($this->attributeName, 'id')->toArray();

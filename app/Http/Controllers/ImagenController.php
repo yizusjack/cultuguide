@@ -28,7 +28,16 @@ class ImagenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $route = $request->file->store('public');
+            $pictures = new Imagen();
+            $pictures->hash = $route;
+            $pictures->nombre = $request->file->getClientOriginalName();
+            $pictures->extension = $request->file->guessExtension();
+            $pictures->mime = $request->file->getMimeType();
+            $pictures->imageable_id = $request->imageable_id;
+            $pictures->imageable_type = $request->imageable_type;
+            $pictures->save();
     }
 
     /**

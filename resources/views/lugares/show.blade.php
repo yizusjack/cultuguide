@@ -29,9 +29,27 @@
         </div>
     </div>
 
+
+    <form action="{{route('imagen.store')}}"
+      class="dropzone"
+      id="my-awesome-dropzone">
+        @csrf
+        <input type="hidden" name="imageable_id" id="imageable_id" value="{{$lugar->id}}">
+        <input type="hidden" name="imageable_type" id="imageable_type" value="{{get_class($lugar)}}">
+    </form>
+
     <div id="map" style="height: 800px;"></div>
 
     @section('js')
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script>
+            // Note that the name "myDropzone" is the camelized
+            // id of the form.
+            Dropzone.options.myAwesomeDropzone = {
+              // Configuration options go here
+            };
+        </script>
+
         <script>
             var map = L.map('map').setView([{{$lugar->latitud}}, {{$lugar->longitud}}], 13);
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('extension');
             $table->string('mime');
             $table->unsignedBigInteger('imageable_id');
-            $table->string('imagen_type');
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }

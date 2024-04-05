@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\ExhibicionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,3 +24,6 @@ Route::resource('lugar', LugarController::class);
 
 //Rutas para las imágenes
 Route::resource('imagen', ImagenController::class);
+
+//rutas para la administración de exhibiciones
+Route::resource('exhibicion', ExhibicionController::class);

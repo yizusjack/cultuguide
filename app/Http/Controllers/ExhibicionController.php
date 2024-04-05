@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lugar;
 use App\Models\Exhibicion;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,9 @@ class ExhibicionController extends Controller
      */
     public function create()
     {
-        //
+        $lugares = Lugar::all();
+        
+        return view('exhibiciones.create', compact('lugares'));
     }
 
     /**
@@ -28,7 +31,17 @@ class ExhibicionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+            'descripcion' => ['required'],
+            'fecha_inicio' => ['required', 'date'],
+            'fecha_fin' => ['nullable', 'date'],
+            'lugares_id' => ['required', 'exists:lugares,id'],
+        ]);
+
+        Exhibicion::create($request->all());
+
+        return redirect()->route('lugar.show', $request->lugares_id);
     }
 
     /**

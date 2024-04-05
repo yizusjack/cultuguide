@@ -6,6 +6,7 @@ use App\Models\Evento;
 use App\Models\Municipio;
 use App\Models\Exhibicion;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Lugar extends Model
@@ -36,5 +37,10 @@ class Lugar extends Model
     public function eventos()
     {
         return $this->hasMany(Evento::class);
+    }
+
+    public function imagenes() : MorphMany
+    {
+        return $this->morphMany(Imagen::class(), 'imageable');
     }
 }

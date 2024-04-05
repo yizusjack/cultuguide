@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Lugar;
 use App\Models\Municipio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class LugarController extends Controller
 {

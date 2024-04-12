@@ -57,7 +57,9 @@ class ExhibicionController extends Controller
      */
     public function edit(Exhibicion $exhibicion)
     {
-        //
+        $lugares = Lugar::all();
+        
+        return view('exhibiciones.edit', compact('exhibicion', 'lugares'));
     }
 
     /**
@@ -65,7 +67,17 @@ class ExhibicionController extends Controller
      */
     public function update(Request $request, Exhibicion $exhibicion)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+            'descripcion' => ['required'],
+            'fecha_inicio' => ['required', 'date'],
+            'fecha_fin' => ['nullable', 'date'],
+            'lugares_id' => ['required', 'exists:lugares,id'],
+        ]);
+
+        $exhibicion->update($request->except('_token', '_method'));
+        
+        return redirect()->route('lugar.show', $request->lugares_id);
     }
 
     /**
@@ -73,6 +85,8 @@ class ExhibicionController extends Controller
      */
     public function destroy(Exhibicion $exhibicion)
     {
-        //
+        $exhibicion->delete();
+
+        return redirect()->route('exhibicion.index');
     }
 }

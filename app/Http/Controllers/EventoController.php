@@ -14,7 +14,9 @@ class EventoController extends Controller
      */
     public function index()
     {
-        dd("Give me something to believe in this HYCAD");
+        $eventos = Evento::with('lugares')->get();
+
+        return view('eventos.index', compact('eventos'));
     }
 
     /**

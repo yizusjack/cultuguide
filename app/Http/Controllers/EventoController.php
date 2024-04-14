@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use Illuminate\Http\Request;
+use App\Models\Lugar;
 
 class EventoController extends Controller
 {
@@ -12,7 +13,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        dd("Give me something to believe in this HYCAD");
     }
 
     /**
@@ -20,7 +21,9 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        $lugares = Lugar::all();
+
+        return view('eventos.create', compact('lugares'));
     }
 
     /**
@@ -28,7 +31,19 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fecha_inicio = $request->input('fecha_inicio');
+
+        $request->validate([
+            'nombre' => ['required', 'max:255'],
+            'descripcion' => ['required'],
+            'fecha_inicio' => ['bail', 'required', 'after_or_equal:today'],
+            'fecha_fin' => ['required', 'after_or_equal:' . $fecha_inicio, 'before_or_equal:2050-12-31'],
+            'lugares_id' => ['required', 'exists:lugares,id'],
+        ]);
+
+        Evento::create($request->all());
+
+        return redirect()->route('evento.index');
     }
 
     /**

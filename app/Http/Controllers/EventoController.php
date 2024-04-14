@@ -52,7 +52,9 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        //
+        $lugar = Lugar::where('id', $evento->lugares_id)->first();
+
+        return view('eventos.show', compact('evento', 'lugar'));
     }
 
     /**
@@ -60,7 +62,6 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
-        // dd($evento);
         $lugares = Lugar::all();
 
         $fecha_inicio_sql = $evento->fecha_inicio;

@@ -24,29 +24,27 @@
                     required
                 />
 
-                <div class="grid md:grid-cols-2 gap-4">
+                <div class="grid md:grid-cols-3 gap-4">
                     <div>
-                        <x-forms.dateInput
+                        <x-forms.normalInput
                             name="fecha_inicio"
                             label="Fecha de inicio: "
                             :value="$fecha_inicio"
+                            type="date"
                             required
                         />
                     </div>
 
                     <div>
-                        <x-forms.dateInput
+                        <x-forms.normalInput
                             name="fecha_fin"
                             label="Fecha de finalización: "
                             :value="$fecha_fin"
+                            type="date"
                             required
                         />
                     </div>
 
-                </div>
-
-
-                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <x-forms.selectInput
                             name="lugares_id"

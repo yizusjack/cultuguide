@@ -14,7 +14,7 @@
                     required
                 />
 
-                <x-forms.textarea
+                <x-forms.textArea
                     name="descripcion"
                     label="Descripción: "
                     placeholder="Proporciona una descripción del lugar"
@@ -58,7 +58,7 @@
                     </div>
 
                     <div>
-                        <x-forms.select
+                        <x-forms.selectInput
                             name="municipios_id"
                             label="Municipio: "
                             placeholder="Seleccione el municipio de locación"

@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\View\View;
 
-class select extends Component
+class selectInput extends Component
 {
     /**
      * Create a new component instance.
@@ -35,6 +35,6 @@ class select extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.forms.select');
+        return view('components.forms.select-input');
     }
 }

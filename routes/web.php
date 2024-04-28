@@ -5,6 +5,7 @@ use App\Http\Controllers\LugarController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ExhibicionController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\RutaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +32,6 @@ Route::resource('exhibicion', ExhibicionController::class);
 
 //Rutas para los eventos
 Route::resource('evento', EventoController::class);
+
+//Rutas para las rutas :v
+Route::resource('rutas', RutaController::class);

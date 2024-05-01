@@ -1,0 +1,1 @@
+{{assset('aseets.img.')}}

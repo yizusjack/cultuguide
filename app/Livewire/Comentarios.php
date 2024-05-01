@@ -32,7 +32,11 @@ class Comentarios extends Component
             'rating' => $this->rating,
         ]);
 
-        $this->content = '';
+        $this->reset([
+            'content',
+            'rating',
+        ]);
+        
         $this->comments = Comentario::where('lugares_id', $this->lugares_id)->get();
     }
 

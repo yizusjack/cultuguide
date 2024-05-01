@@ -32,6 +32,3 @@ Route::resource('exhibicion', ExhibicionController::class);
 
 //Rutas para los eventos
 Route::resource('evento', EventoController::class);
-
-Route::post('comentarios/store', [ComentarioController::class, 'store'])->name('comentarios.store');
-Route::delete('comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentarios.destroy');

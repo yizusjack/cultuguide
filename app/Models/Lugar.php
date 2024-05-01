@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Evento;
 use App\Models\Municipio;
 use App\Models\Exhibicion;
+use App\Models\Comentario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,5 +43,9 @@ class Lugar extends Model
     public function imagenes() : MorphMany
     {
         return $this->morphMany(Imagen::class(), 'imageable');
+    }
+
+    public function comentarios(){
+        return $this->hasMany(Comentario::class, 'lugares_id');
     }
 }

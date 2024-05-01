@@ -33,5 +33,5 @@ Route::resource('exhibicion', ExhibicionController::class);
 //Rutas para los eventos
 Route::resource('evento', EventoController::class);
 
-//Rutas para las rutas :v
+//Rutas para las rutas de transporte
 Route::resource('rutas', RutaController::class);

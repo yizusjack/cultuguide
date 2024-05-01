@@ -5,6 +5,7 @@ use App\Http\Controllers\LugarController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ExhibicionController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ComentarioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +32,6 @@ Route::resource('exhibicion', ExhibicionController::class);
 
 //Rutas para los eventos
 Route::resource('evento', EventoController::class);
+
+Route::post('comentarios/store', [ComentarioController::class, 'store'])->name('comentarios.store');
+Route::delete('comentarios/{comentario}', [ComentarioController::class, 'destroy'])->name('comentarios.destroy');

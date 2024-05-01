@@ -76,42 +76,7 @@
 
         </script>
     @endsection
-    <div>
-        <h2>Comentarios</h2>
-        @foreach($lugar->comentarios as $comentario)
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Usuario: {{$comentario->user->name}} | Rating: {{ $comentario->rating }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ $comentario->content }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ $comentario->created_at }}</td>
-                        @if (auth()->id() === $comentario->user->id)
-                            <td>
-                                <form action="{{ route('comentarios.destroy', $comentario->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">Eliminar</button>
-                                </form>
-                            </td>
-                        @endif
-                    </tr>
-                </tbody>
-            </table>
-        @endforeach
-        
-        @if(auth()->user())
-        <h2>Nuevo Comentario</h2>
-        <form action="{{ route('comentarios.store') }}" method="POST">
-            @csrf
-            <input type="hidden" name="lugares_id" value="{{ $lugar->id }}">
-            <textarea name="content" required></textarea><br>
-            <input type="number" name="rating" min="1" max="10" required><br>
-            <button type="submit">Agregar Comentario</button>
-        </form>
-        @endif
-    </div>
+    
+    <livewire:comentarios :lugares_id="$lugar->id" />
+
 </x-layout>

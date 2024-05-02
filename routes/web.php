@@ -6,7 +6,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ExhibicionController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.landing');
 });
 
 Route::middleware([
@@ -15,7 +15,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('landing.landing');
     })->name('dashboard');
 });
 

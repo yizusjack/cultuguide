@@ -56,16 +56,19 @@
                         <div class="card-body">
                             <h5 class="card-title text-center mb-4 tituloo">Iniciar Sesión</h5>
                             <br><br>
-                            <form>
+                            <x-validation-errors class="mb-4" />
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+
                                 <div class="mb-3">
                                     <label for="email" class="form-label titulo-label">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="usuario@ejemplo.com" value= "{{ old('email ')}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label titulo-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" value= "{{ old('password ')}}">
                                     <br>
-                                    <a href="registro.html" style="font-size: 13px;">¿No tienes cuenta? Crea una.</a>
+                                    <a href="{{ route('register')}} " style="font-size: 13px;">¿No tienes cuenta? Crea una.</a>
                                 </div>
                                 <div class="d-grid gap-2 justify-content-center align-items-center">
                                     <br><br>

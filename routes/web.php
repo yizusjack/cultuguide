@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('landing.landing');
 });
 
+Route::get('hola', function () {
+    return view('landing.inicioSesion');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

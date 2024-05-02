@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>CultuGuide</title>
     <!-- font icons -->
-    <link rel="icon" href="assets/imgs/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="icon" href="{{ asset('assets/imgs/icon.png')  }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/themify-icons/css/themify-icons.css')  }}">
     <!-- Bootstrap + LeadMark main styles -->
-	<link rel="stylesheet" href="assets/css/leadmark.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/leadmark.css')  }}">
     <!-- JavaScript de Bootstrap (requiere jQuery) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+6zEiZ6taOe7k6Kpe8BdV3i3R5OyZjs5W93nV7C1Pai5iLv6P1txNqNaeD" crossorigin="anonymous"></script>
 

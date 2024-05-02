@@ -14,6 +14,53 @@
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse; /* Cambiamos la dirección de los elementos */
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-image: url('https://cdn.jsdelivr.net/npm/font-awesome@5.15.4/css/fontawesome.min.css');
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+.rating label:before {
+  content: "\f005";
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rating input:checked ~ label:before {
+  color: #ffcc00;
+}
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag {
+  background-color: #ccc;
+  color: #000;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+}
 .card {
   border: none;
   border-radius: 10px;

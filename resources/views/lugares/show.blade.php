@@ -76,5 +76,7 @@
 
         </script>
     @endsection
+    
+    <livewire:comentarios :lugares_id="$lugar->id" />
 
 </x-layout>

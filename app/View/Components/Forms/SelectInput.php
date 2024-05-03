@@ -35,6 +35,6 @@ class selectInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.forms.select');
+        return view('components.forms.select-input');
     }
 }

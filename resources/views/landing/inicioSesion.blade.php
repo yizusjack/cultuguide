@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,10 @@
     <!-- modernizr -->
     <script src="js/modernizr.js"></script>
 </head>
-<body>
+<body>--}}
+<x-layout
+    name="Login"
+>
     <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
         <div class="container">
             <div>
@@ -82,7 +85,7 @@
         </div>
     </section>
 
-<!-- Bootstrap Bundle with Popper -->
+{{--<!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
     <!--  plugins -->
@@ -103,6 +106,7 @@
     <script src="assets/js/leadmark.js"></script>
 
     <!--  custom script -->
-    <script src="js/custom.js"></script>
-</body>
-</html>
+    <script src="js/custom.js"></script>--}}
+</x-layout>
+{{--</body>
+</html>--}}

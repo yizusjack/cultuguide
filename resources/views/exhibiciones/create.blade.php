@@ -14,7 +14,7 @@
                     required
                 />
 
-                <x-forms.textarea
+                <x-forms.textArea
                     name="descripcion"
                     label="Descripción: "
                     placeholder="Proporciona una descripción de la exhibicion"
@@ -42,7 +42,7 @@
                     </div>
 
                     <div>
-                        <x-forms.select
+                        <x-forms.selectInput
                             name="lugares_id"
                             label="Lugar: "
                             placeholder="Seleccione el lugar donde se presentará"

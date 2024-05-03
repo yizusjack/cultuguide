@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\View\View;
 
-class select extends Component
+class selectInput extends Component
 {
     /**
      * Create a new component instance.

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap + LeadMark main styles -->
-	<link rel="stylesheet" href="assets/css/leadmark.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/leadmark.css') }}">
     <!-- JavaScript de Bootstrap (requiere jQuery) -->
 
     <!-- Bootstrap -->
@@ -40,6 +40,36 @@
 
 </head>
 <body>
+    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+        <div class="container">
+            <div>
+                <a class="text-info h1titulo">CultuGuide</a>
+            </div>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    @if( !Route::is('login') and !Route::is('register'))
+                        @auth
+                            <li class="nav-item">
+                                <a href="{{ route('lugar.index') }}" class="btn btn-outline-info rounded">Ir al inicio</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="btn btn-outline-info rounded">Inicio de sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}" class="ml-4 nav-link btn btn-info btn-sm rounded">Registro</a>
+                            </li>
+                        @endauth  
+                    @endif                   
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     {{$slot}}
 
     

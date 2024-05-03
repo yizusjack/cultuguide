@@ -29,21 +29,6 @@
     <x-layout
         name="Registro"
     >
-        <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
-            <div class="container">
-                <div>
-                    <a class="text-info h1titulo">CultuGuide</a>
-                </div>
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="search">
-                    <input type="text" placeholder="Buscar..." id="search-input">
-                </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                </div>
-            </div>
-        </nav>
         <section  id="service" class="section pt-0">
             <div class="container"></div>
             <br>
@@ -78,6 +63,7 @@
                                         <label for="password_confirmation" class="form-label titulo-label">Confirmar Contraseña</label>
                                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Contraseña">
                                     </div>
+                                    <a href="{{ route('login')}} " style="font-size: 13px;">¿Ya tienes una cuenta? Ingresa.</a>
                                     <div class="d-grid gap-2 justify-content-center align-items-center">
                                         <br><br>
                                         <button type="submit" class="btn btn-primary" style="max-width: 150px;">Registrarse</button>

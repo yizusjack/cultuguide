@@ -1,8 +1,8 @@
 <x-layout
-    title="Editar ruta {{ $ruta->id }}"
+    title="Editar ruta {{ $ruta->ruta_actual }}"
 >
     <div class="m-3 p-3 space-y-12">
-            <h1>Editar ruta {{ $ruta->id }}</h1>
+            <h2>Editar ruta {{ $ruta->ruta_actual }}</h2>
 
             <form action="{{ route('rutas.update', $ruta) }}" method="POST">
                 @csrf

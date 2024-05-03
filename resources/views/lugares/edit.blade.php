@@ -2,7 +2,7 @@
     title="Editar {{$lugar->nombre}}"
 >
     <div class="m-3 p-3 space-y-12">
-            <h1>Editar {{$lugar->nombre}}</h1>
+            <h2>Editar {{$lugar->nombre}}</h2>
 
             <form action="{{route('lugar.update', $lugar)}}" method="POST">
                 @csrf

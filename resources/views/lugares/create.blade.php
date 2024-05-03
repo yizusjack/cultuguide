@@ -1,10 +1,7 @@
 <x-layout
     title="Crear lugares"
 >
-<section  id="service" class="section pt-0">
-    <div class="container"></div>
-    <br><br>
-</section>
+
     <section id="service" class="section pt-0">
         <div class="m-3 p-100">
             <div>

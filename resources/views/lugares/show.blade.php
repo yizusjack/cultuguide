@@ -1,8 +1,8 @@
 <x-layout
     title="{{$lugar->nombre}}"
 >
-    <div class="m-3">
-        <h1>{{$lugar->nombre}}</h1>
+    <div class="m-3 p-3 space-y-12">
+        <h2>{{$lugar->nombre}}</h2>
         <div>
             <p>{!! nl2br($lugar->descripcion) !!}</p>
         </div>
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div id="map" style="height: 800px;"></div>
+    <div id="map" class="m-3 p-3" style="height: 800px;"></div>
 
     @section('js')
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>

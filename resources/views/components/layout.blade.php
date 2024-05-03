@@ -40,7 +40,7 @@
 
 </head>
 <body>
-    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+    <nav class="navbar custom-navbar navbar-expand-md navbar-dark bg-dark fixed-top" data-spy="affix" data-offset-top="10">
         <div class="container">
             <div>
                 <a class="text-info h1titulo">CultuGuide</a>
@@ -69,6 +69,11 @@
             </div>
         </div>
     </nav>
+    <br>
+
+    <section  id="service" class="section pt-0">
+        <div class="container"></div>
+    </section>
 
     {{$slot}}
 

@@ -11,7 +11,7 @@
         <input type="{{$type}}" name="{{$name}}" id="{{$name}}" value="{{old($name) ?? $value}}" {{$attributes}} placeholder="{{$placeholder}}" class="form-control">
     </div>
     @error($name)
-        <h5 class="text-red-500">{{$message}}</h5>
+        <p class="text-red-500">{{$message}}</p>
     @enderror
 
 </div>

@@ -8,7 +8,11 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\RutaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.landing');
+});
+
+Route::get('hola', function () {
+    return view('landing.inicioSesion');
 });
 
 Route::middleware([
@@ -17,7 +21,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('landing.landing');
     })->name('dashboard');
 });
 

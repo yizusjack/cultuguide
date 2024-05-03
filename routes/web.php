@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('hola', function () {
-    return view('landing.inicioSesion');
+    return view('landing.registro');
 });
 
 Route::middleware([
@@ -21,7 +21,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('landing.landing');
+        return view('welcome');
     })->name('dashboard');
 });
 

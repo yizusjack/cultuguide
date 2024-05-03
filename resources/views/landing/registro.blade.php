@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{--<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -25,7 +25,10 @@
         <!-- modernizr -->
         <script src="js/modernizr.js"></script>
     </head>
-    <body>
+    <body>--}}
+    <x-layout
+        name="Registro"
+    >
         <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
             <div class="container">
                 <div>
@@ -49,28 +52,31 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 d-none d-md-block">
-                        <img src="assets/imgs/regi.jpg" class="card-img" alt="Imagen" style="max-width: 500px;">
+                        <img src="{{ asset('assets/imgs/regi.jpg') }}" class="card-img" alt="Imagen" style="max-width: 500px;">
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-5 col-md-10">
                             <div class="card-body">
                                 <h5 class="card-title text-center mb-4 tituloo">Crear cuenta</h5>
-                                <form>
+                                <x-validation-errors class="mb-4" />
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+
                                     <div class="mb-3">
-                                        <label for="nombre" class="form-label titulo-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                                        <label for="name" class="form-label titulo-label">Nombre</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label titulo-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="usuario@ejemplo.com">
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label titulo-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="confirm-password" class="form-label titulo-label">Confirmar Contraseña</label>
-                                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirmar Contraseña">
+                                        <label for="password_confirmation" class="form-label titulo-label">Confirmar Contraseña</label>
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Contraseña">
                                     </div>
                                     <div class="d-grid gap-2 justify-content-center align-items-center">
                                         <br><br>
@@ -84,7 +90,9 @@
             </div>
         </section>
 
-        <!-- Bootstrap Bundle with Popper -->
+    </x-layout>
+
+        {{--<!-- Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-2.1.1.js"></script>
@@ -108,4 +116,4 @@
         <!--  custom script -->
         <script src="js/custom.js"></script>
     </body>
-</html>
+</html>--}}

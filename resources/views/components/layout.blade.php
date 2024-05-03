@@ -10,7 +10,7 @@
     @livewireStyles
 
     <title>{{ $title ?? 'Cultuguide' }}</title>
-    <link rel="icon" href="assets/imgs/icon.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/imgs/icon.png') }}" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">

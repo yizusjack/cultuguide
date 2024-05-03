@@ -2,7 +2,7 @@
     title="Crear rutas"
 >
     <div class="m-3 p-3 space-y-12">
-            <h1>Crear rutas</h1>
+            <h2>Crear rutas</h2>
 
             <form action="{{ route('rutas.store') }}" method="POST">
                 @csrf

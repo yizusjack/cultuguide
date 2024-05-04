@@ -4,6 +4,7 @@ namespace App\Livewire\Listados;
 
 use App\Models\Lugar;
 use Livewire\Component;
+use App\Models\Municipio;
 use Livewire\WithPagination;
 
 class LugaresList extends Component
@@ -11,15 +12,27 @@ class LugaresList extends Component
     use WithPagination;
 
 
-    protected $paginationTheme = 'bootstrap';
+    public string $nombreLugar="";
+    public $municipio;
 
-    public function mount()
-    {
-        
-    }
+
+    protected $paginationTheme = 'bootstrap';
     
     public function render()
     {
-        return view('livewire.listados.lugares-list', ['lugares' => Lugar::with('imagenes')->paginate(3),]);
+        $municipios = Municipio::all();
+        $lugares = Lugar::query()
+        ->when($this->nombreLugar, function($query){
+            $query->where('nombre', 'like', '%' . $this->nombreLugar . '%');
+        })
+        ->when($this->municipio, function($query){
+            $query->where('municipios_id', $this->municipio);
+        })
+        ->with('imagenes')
+        ->paginate(6);
+
+        $this->resetPage();
+
+        return view('livewire.listados.lugares-list', compact('lugares', 'municipios'));
     }
 }

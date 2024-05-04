@@ -1,5 +1,27 @@
 <div>
     <div class="row">
+        <div class="col-6">
+            <x-forms.normalInput
+                name="nombreLugar"
+                label="Nombre del lugar"
+                placeholder="Buscar por nombre"
+                wire:model.live='nombreLugar'
+            />
+        </div>
+
+        <div class='col-6'>
+            <x-forms.selectInput
+                name="municipio"
+                label="Municipio: "
+                placeholder="Buscar por municipio"
+                :options="$municipios"
+                attributeName="nombre"
+                wire:model.live='municipio'
+            />
+        </div>
+    </div>
+
+    <div class="row">
         @foreach ($lugares as $lugar)
         <div class="col-lg-4">
             <a href="{{ route('lugar.show', $lugar)}}">

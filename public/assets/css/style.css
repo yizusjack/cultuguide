@@ -1173,3 +1173,14 @@ textarea:focus {
         line-height: 30px;
     }
 }
+
+.custom-image {
+    width: 100%; /* Define el ancho deseado */
+    height: 200px; /* Define la altura deseada */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda las dimensiones definidas */
+  }
+  .custom-image img {
+    width: 100%; /* Ajusta la imagen para llenar completamente su contenedor */
+    height: 200px;  /*Permite que la altura se ajuste automáticamente para mantener la proporción original */
+    object-fit: contain;
+  }

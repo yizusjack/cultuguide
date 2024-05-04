@@ -15,7 +15,7 @@ class LugarController extends Controller
      */
     public function index()
     {
-        dd("Suena la alarma, seré furiosa");
+        return view('lugares.index');
     }
 
     /**

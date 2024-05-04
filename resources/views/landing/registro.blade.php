@@ -26,13 +26,14 @@
         <script src="js/modernizr.js"></script>
     </head>
     <body>--}}
-    <x-layout
+    <x-landingLayout
         name="Registro"
     >
-        <section  id="service" class="section pt-0">
+        {{--<section  id="service" class="section pt-0">
             <div class="container"></div>
             <br>
-        </section>
+        </section>--}}
+        <br>
         <section id="service" class="section pt-0">
             <div class="container">
                 <div class="row align-items-center">
@@ -76,7 +77,7 @@
             </div>
         </section>
 
-    </x-layout>
+    </x-landingLayout>
 
         {{--<!-- Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

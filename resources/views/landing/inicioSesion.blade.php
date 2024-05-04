@@ -26,13 +26,14 @@
     <script src="js/modernizr.js"></script>
 </head>
 <body>--}}
-<x-layout
+<x-landingLayout
     name="Login"
 >
-    <section  id="service" class="section pt-0">
+    {{-- <section  id="service" class="section pt-0">
         <div class="container"></div>
         <br><br>
-    </section>
+    </section> --}}
+    <br>
     <section id="service" class="section pt-0">
         <div class="container">
             <div class="row align-items-center">
@@ -92,6 +93,6 @@
 
     <!--  custom script -->
     <script src="js/custom.js"></script>--}}
-</x-layout>
+</x-landingLayout>
 {{--</body>
 </html>--}}

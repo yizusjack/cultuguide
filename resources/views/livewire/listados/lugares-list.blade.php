@@ -3,7 +3,7 @@
         @foreach ($lugares as $lugar)
         <div class="col-lg-4">
             <a href="{{ route('lugar.show', $lugar)}}">
-                <div class="card">
+                <div class="card p-2">
                     <img
                         src="{{ $lugar->imagenes()->first() ? Storage::url($lugar->imagenes()->first()->hash) : asset('assets/imgs/nf.jpg') }}"
                         class="card-img-top"
@@ -18,4 +18,6 @@
         </div>
         @endforeach
     </div>
+
+    {{ $lugares->links() }}
 </div>

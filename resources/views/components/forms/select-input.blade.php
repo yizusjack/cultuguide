@@ -21,7 +21,7 @@
       </select>
 
         @error($name)
-            <h5 class="text-red-500">{{$message}}</h5>
+            <p class="text-red-500">{{$message}}</p>
         @enderror
 
     </div>

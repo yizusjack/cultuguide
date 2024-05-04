@@ -1,8 +1,8 @@
 <x-layout
-    title="Crear lugares"
+    title="Editar {{$exhibicion->nombre}}"
 >
     <div class="m-3 p-3 space-y-12">
-            <h1>Crear lugares</h1>
+            <h2>Editar {{$exhibicion->nombre}}</h2>
 
             <form action="{{route('exhibicion.update', $exhibicion)}}" method="POST">
                 @csrf

@@ -6,6 +6,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ExhibicionController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\RutaController;
+use App\Http\Controllers\CostoController;
 
 Route::get('/', function () {
     return view('landing.landing');
@@ -39,3 +40,6 @@ Route::resource('evento', EventoController::class);
 
 //Rutas para las rutas de transporte
 Route::resource('rutas', RutaController::class);
+
+//Rutas para los costos
+Route::resource('costos', CostoController::class);

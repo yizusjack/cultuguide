@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Costo;
+use App\Models\Lugar;
 use Illuminate\Http\Request;
 
 class CostoController extends Controller
@@ -20,14 +21,32 @@ class CostoController extends Controller
      */
     public function create()
     {
+        $lugares = Lugar::all();
+        
         $categorias = collect([
-            ['value' => 'Estudiante'],
-            ['value' => 'Infante'],
-            ['value' => 'Adulto mayor'],
-            ['value' => 'Residente del estado de Jalisco'],
-            ['value' => 'Turista'],
+            [
+                'id' => 'Estudiante',
+                'value' => 'Estudiante'
+            ],
+            [
+                'id' => 'Infante',
+                'value' => 'Infante'
+            ],
+            [
+                'id' => 'Adulto mayor',
+                'value' => 'Adulto mayor'
+            ],
+            [
+                'id' => 'Residente del estado de Jalisco',
+                'value' => 'Residente del estado de Jalisco'
+            ],
+            [
+                'id' => 'Turista',
+                'value' => 'Turista'
+            ],
         ]);
-        return view('costo.create', compact('categorias'));
+
+        return view('costo.create', compact('categorias', 'lugares'));
     }
     /**
      * Store a newly created resource in storage.
@@ -39,7 +58,9 @@ class CostoController extends Controller
             'costo' => 'required|numeric',
             'lugares_id' => 'required|exists:lugares,id',
         ]);
+
         Costo::create($request->all());
+
         return redirect()->route('costos.index')->with('success', 'Costo creado correctamente.');
     }
 
@@ -56,14 +77,32 @@ class CostoController extends Controller
      */
     public function edit(Costo $costo)
     {
+        $lugares = Lugar::all();
+
         $categorias = collect([
-            ['value' => 'Estudiante'],
-            ['value' => 'Infante'],
-            ['value' => 'Adulto mayor'],
-            ['value' => 'Residente del estado de Jalisco'],
-            ['value' => 'Turista'],
+            [
+                'id' => 'Estudiante',
+                'value' => 'Estudiante'
+            ],
+            [
+                'id' => 'Infante',
+                'value' => 'Infante'
+            ],
+            [
+                'id' => 'Adulto mayor',
+                'value' => 'Adulto mayor'
+            ],
+            [
+                'id' => 'Residente del estado de Jalisco',
+                'value' => 'Residente del estado de Jalisco'
+            ],
+            [
+                'id' => 'Turista',
+                'value' => 'Turista'
+            ],
         ]);
-        return view('costo.edit', compact('costo', 'categorias'));
+
+        return view('costo.edit', compact('costo', 'categorias', 'lugares'));
     }
 
     /**
@@ -76,7 +115,9 @@ class CostoController extends Controller
             'costo' => 'required|numeric',
             'lugares_id' => 'required|exists:lugares,id',
         ]);
-        $costo->update($request->all());
+
+        $costo->update($request->except('_token', '_method'));
+
         return redirect()->route('costos.index')->with('success', 'Costo actualizado correctamente.');
     }
 
@@ -86,6 +127,7 @@ class CostoController extends Controller
     public function destroy(Costo $costo)
     {
         $costo->delete();
+
         return redirect()->route('costos.index')->with('success', 'Costo eliminado correctamente.');
     }
 }

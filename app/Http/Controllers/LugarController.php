@@ -52,7 +52,11 @@ class LugarController extends Controller
      */
     public function show(Lugar $lugar)
     {
-        return view('lugares.show', compact('lugar'));
+        $mainPic = $lugar->imagenes->first();
+
+        $pictures = $lugar->imagenes;
+        
+        return view('lugares.show', compact('lugar', 'mainPic', 'pictures'));
     }
 
     /**

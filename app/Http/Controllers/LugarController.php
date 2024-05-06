@@ -88,7 +88,7 @@ class LugarController extends Controller
         
         $lugar->update($request->except('_token', '_method'));
         
-        return redirect()->route('lugar.index');
+        return redirect()->route('lugar.show', $lugar);
 
     }
 

@@ -49,7 +49,7 @@ class ExhibicionController extends Controller
      */
     public function show(Exhibicion $exhibicion)
     {
-        //
+        return view('exhibiciones.show', compact('exhibicion'));
     }
 
     /**

@@ -39,6 +39,10 @@ class ImagenController extends Controller
                     $tabla = 'lugares';
                 break;
 
+                case 'App\Models\Exhibicion':
+                    $tabla = 'exhibiciones';
+                break;
+
                 default:
                     throw new Exception('La tabla no existe');
                 break;
@@ -47,7 +51,7 @@ class ImagenController extends Controller
             
             $request->validate([
                 'imageable_id' => ['required', 'exists:'.$tabla.',id',],
-                'imageable_type' => ['required', Rule::in(['App\Models\Lugar'])],
+                'imageable_type' => ['required', Rule::in(['App\Models\Lugar', 'App\Models\Exhibicion'])],
             ]);
         
             $route = $request->file->store('public');

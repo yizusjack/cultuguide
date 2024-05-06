@@ -22,6 +22,11 @@
 
         @auth
 
+        @if (! @isset(Auth::user()->email_verified_at))
+            <div class="p-3">Email no verificado</div>
+        @endif  
+        <div></div>
+
           <li class="nav-item dropdown">
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">

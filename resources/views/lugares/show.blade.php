@@ -115,6 +115,18 @@
             </div>
         </div>
 
+        <div class="p-3">
+            <h2>
+                Exhibiciones en este lugar
+            </h2>
+            
+            <livewire:listados.exhibiciones-list
+                :lugar="$lugar"
+            />
+        </div>
+
+        <livewire:comentarios :lugares_id="$lugar->id" />
+
     </div>
 
     @section('js')
@@ -127,7 +139,7 @@
         </script>
 
         <script>
-            var map = L.map('map').setView([{{$lugar->latitud}}, {{$lugar->longitud}}], 13);
+            var map = L.map('map').setView([{{$lugar->latitud}}, {{$lugar->longitud}}], 10);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -145,12 +157,16 @@
                 const longitude = position.coords.longitude;
                 const accuracy = position.coords.accuracy;
 
+                const lugLat = {{$lugar->latitud}};
+                const lugLon = {{$lugar->longitud}}
+
                 if(marker){
                     map.removeLayer(marker);
                     map.removeLayer(circle);
                 }
 
-                L.marker([{{$lugar->latitud}}, {{$lugar->longitud}}], {title:"{{$lugar->nombre}}"}).addTo(map);
+                //L.marker([{{$lugar->latitud}}, {{$lugar->longitud}}], {title:"{{$lugar->nombre}}"}).addTo(map);
+                L.marker([lugLat, lugLon], {title:"{{$lugar->nombre}}"}).addTo(map);
 
                 marker = L.marker([latitude, longitude], {title:"Ubicación actual"}).addTo(map);
                 circle = L.circle([latitude, longitude], { radius: accuracy }).addTo(map);
@@ -159,7 +175,8 @@
                     zoomed = map.fitBounds(circle.getBounds());
                 }
 
-                map.setView([latitude, longitude]);
+                //map.setView([latitude, longitude]);
+                map.setView([lugLat, lugLon]);
             }
 
             function error(error){
@@ -173,7 +190,5 @@
 
         </script>
     @endsection
-    
-    <livewire:comentarios :lugares_id="$lugar->id" />
 
 </x-layout>

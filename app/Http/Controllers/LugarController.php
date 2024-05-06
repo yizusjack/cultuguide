@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Costo;
 use App\Models\Lugar;
 use App\Models\Municipio;
 use Illuminate\Http\Request;
@@ -52,7 +53,13 @@ class LugarController extends Controller
      */
     public function show(Lugar $lugar)
     {
-        return view('lugares.show', compact('lugar'));
+        $mainPic = $lugar->imagenes->first();
+
+        $pictures = $lugar->imagenes;
+
+        $costos = Costo::whereBelongsTo($lugar)->get();
+        
+        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos'));
     }
 
     /**

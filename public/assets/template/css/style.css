@@ -1236,3 +1236,8 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}

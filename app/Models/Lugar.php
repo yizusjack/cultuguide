@@ -50,7 +50,7 @@ class Lugar extends Model
         return $this->hasMany(Comentario::class, 'lugares_id');
     }
 
-    public function costos(){
+    public function costo(){
         return $this->hasMany(Costo::class);
     }
 }

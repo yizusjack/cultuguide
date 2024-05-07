@@ -2,7 +2,13 @@
     title="{{$lugar->nombre}}"
 >
     <div class="m-3 p-3 space-y-12">
-        <h2>{{$lugar->nombre}}</h2>
+        <div class="text-center">
+            <h2>{{$lugar->nombre}}</h2>
+        </div>
+
+        <livewire:acciones.acciones-lugar
+                :lugar="$lugar"
+            />
 
         <div class="row">
             <div class="col-md-4">
@@ -102,16 +108,6 @@
                           </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="flex justify-center m-3">
-            <div class="text-center w-full">
-                <form action="{{route('imagen.store')}}" class="dropzone mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10" id="my-awesome-dropzone">
-                    @csrf
-                    <input type="hidden" name="imageable_id" id="imageable_id" value="{{$lugar->id}}">
-                    <input type="hidden" name="imageable_type" id="imageable_type" value="{{get_class($lugar)}}">
-                </form>
             </div>
         </div>
 

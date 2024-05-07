@@ -97,8 +97,11 @@ class LugarController extends Controller
      */
     public function destroy(Lugar $lugar)
     {
+        
         $lugar->delete();
 
         return redirect()->route('lugar.index');
+
+        //FALTA ELIMINAR IMAGENES LIGADAS
     }
 }

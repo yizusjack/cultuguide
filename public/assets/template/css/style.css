@@ -510,6 +510,10 @@ h6 {
   transition: 0.3s;
 }
 
+.header-nav .notifications .notification-active {
+  background-color: #f5e9e9;
+}
+
 .header-nav .notifications .notification-item i {
   margin: 0 20px 0 10px;
   font-size: 24px;

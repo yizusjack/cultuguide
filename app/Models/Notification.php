@@ -19,6 +19,8 @@ class Notification extends Model
         'icon',
         'color',
         'readed_at',
+        'redirect_to',
+        'redirect_parameter',
     ];
 
     public function user()

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('icon');
             $table->string('color');
+            $table->string('redirect_to')->nullable()->default(null);
+            $table->unsignedInteger('redirect_parameter')->nullable()->default(null);
             $table->timestamp('readed_at')->nullable()->default(null);
             $table->timestamps();
         });

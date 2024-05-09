@@ -16,8 +16,11 @@ class Crear extends Component
         $notification->user_id = $user;
         $notification->icon = "bookmark-plus-fill";
         $notification->color = "success";
+        $notification->redirect_to = "evento.index";
 
         $notification->save();
+
+        $this->dispatch('list')->to('Notificacion.ShowNoti');
 
     }
     

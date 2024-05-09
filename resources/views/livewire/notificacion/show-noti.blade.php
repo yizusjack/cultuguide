@@ -17,7 +17,7 @@
                 <hr class="dropdown-divider">
             </li>
 
-            <li class="notification-item {{ $notification->readed_at == null ? 'notification-active' : '' }}">
+            <li class="notification-item {{ $notification->readed_at == null ? 'notification-active' : '' }}" wire:click="goToNoti({{ $notification }})">
                 {{$notification->time}}
                 <i class="bi bi-{{ $notification->icon }} text-{{ $notification->color }}"></i>
                 <div>

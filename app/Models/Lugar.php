@@ -55,6 +55,10 @@ class Lugar extends Model
         return $this->hasMany(Costo::class);
     }
 
+    public function rutas()
+    {
+        return $this->belongsToMany(Ruta::class);
+    }
     public function notification()
     {
         return $this->hasMany(Notification::class);

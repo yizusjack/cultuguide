@@ -11,4 +11,9 @@ class Ruta extends Model
         'ruta_antigua',
         'ruta_actual',
     ];
+
+    public function lugares()
+    {
+        return $this->belongsToMany(Lugar::class);
+    }
 }

@@ -31,7 +31,7 @@
                     Agregar imagenes
                 </div>
                 
-                <div class="flex justify-center m-3">
+                <div class="flex justify-center m-3" wire:ignore>
                     <div class="text-center w-full">
                         <form action="{{route('imagen.store')}}" class="dropzone mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10" id="my-awesome-dropzone">
                             @csrf

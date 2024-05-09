@@ -7,6 +7,7 @@ use App\Models\Imagen;
 use App\Models\Municipio;
 use App\Models\Comentario;
 use App\Models\Exhibicion;
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,5 +53,10 @@ class Lugar extends Model
 
     public function costo(){
         return $this->hasMany(Costo::class);
+    }
+
+    public function notification()
+    {
+        return $this->hasMany(Notification::class);
     }
 }

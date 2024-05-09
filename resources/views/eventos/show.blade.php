@@ -1,6 +1,9 @@
 <x-layout
     title="{{$evento->nombre}}"
 >
+
+    <livewire:notificacion.crear/>
+
     <div class="m-3">
         <h1>{{$evento->nombre}}</h1>
         <div>

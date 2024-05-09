@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LugarController;
-use App\Http\Controllers\ImagenController;
-use App\Http\Controllers\ExhibicionController;
-use App\Http\Controllers\EventoController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\CostoController;
+use App\Http\Controllers\LugarController;
+use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\ExhibicionController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('landing.landing');
@@ -43,3 +44,9 @@ Route::resource('rutas', RutaController::class);
 
 //Rutas para los costos
 Route::resource('costos', CostoController::class);
+
+//Rutas para las  notificaciones
+Route::get('notification',
+    [NotificationController::class, 'index'])
+    ->name('notification.index')
+    ->middleware('auth');

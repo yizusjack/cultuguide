@@ -1,7 +1,17 @@
 <x-layout
     name="Lugares"
 >
-    <h1>Lugares</h1>
+    <div class="text-center">    
+        <h1>Lugares</h1>
+    </div>
+
+    <div class="row">
+        <div class="text-right">
+            <a href="{{ route('lugar.create') }}">
+                <button class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Nuevo lugar</button>
+            </a>
+        </div>
+    </div>
     
     <livewire:listados.lugares-list/>
 

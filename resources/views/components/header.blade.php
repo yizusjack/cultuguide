@@ -27,7 +27,9 @@
         @endif  
         <div></div>
 
-          <li class="nav-item dropdown">
+        <livewire:notificacion.show-noti/>
+
+          {{--<li class="nav-item dropdown">
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
@@ -43,7 +45,7 @@
                 <hr class="dropdown-divider">
               </li>
 
-              <li class="notification-item">
+              <li class="notification-item notification-active">
                 <i class="bi bi-exclamation-circle text-warning"></i>
                 <div>
                   <h4>Lorem Ipsum</h4>
@@ -100,7 +102,7 @@
 
             </ul><!-- End Notification Dropdown Items -->
 
-          </li><!-- End Notification Nav -->
+          </li>--}}<!-- End Notification Nav -->
 
             <li class="nav-item dropdown pe-3">
 

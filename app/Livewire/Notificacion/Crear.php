@@ -21,6 +21,7 @@ class Crear extends Component
         $notification->save();
 
         $this->dispatch('list')->to('Notificacion.ShowNoti');
+        $this->dispatch('list')->to('Notificacion.AllNotis');
 
     }
     

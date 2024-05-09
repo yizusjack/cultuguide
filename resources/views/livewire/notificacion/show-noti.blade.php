@@ -9,7 +9,7 @@
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
           <li class="dropdown-header">
             Tienes {{ $unreaded }} {{ $unreaded == 1 ? 'notificacion nueva' : 'notificaciones nuevas' }}
-            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+            <a href="{{ route('notification.index' )}}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
           </li>
 
           @foreach ($notifications as $notification)
@@ -32,7 +32,7 @@
             <hr class="dropdown-divider">
           </li>
           <li class="dropdown-footer">
-            <a href="#">Show all notifications</a>
+            <a href="{{ route('notification.index' )}}">Ver todas las notificaciones</a>
           </li>
 
         </ul><!-- End Notification Dropdown Items -->

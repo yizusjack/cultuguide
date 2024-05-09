@@ -514,6 +514,19 @@ h6 {
   background-color: #f5e9e9;
 }
 
+.card .card-body .list-group .notification-element:hover {
+  background-color: #d9d5d5;
+  transition: 1s;
+}
+
+.card .card-body .list-group .notification-active {
+  background-color: #f5e9e9;
+}
+
+.card .card-body .list-group .notification-active:hover {
+  background-color: #c3b7b7;
+}
+
 .header-nav .notifications .notification-item i {
   margin: 0 20px 0 10px;
   font-size: 24px;
@@ -1244,4 +1257,8 @@ h6 {
 .carousel-control-next,
 .carousel-control-prev /*, .carousel-indicators */ {
     filter: invert(100%);
+}
+
+.noti:hover{
+  background-color: #61c587;
 }

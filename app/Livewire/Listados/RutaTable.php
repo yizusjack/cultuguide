@@ -27,6 +27,14 @@ class RutaTable extends DataTableComponent
             Column::make("Ruta actual", "ruta_actual")
                 ->sortable()
                 ->searchable(),
+            Column::make("Acciones")
+                ->label(
+                    function($row){
+                        $id = $row->id;
+                        return view('livewire.acciones.acciones-ruta', compact('id'));
+                    }
+                )
+                ->html(),
         ];
     }
 }

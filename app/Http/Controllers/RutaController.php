@@ -12,7 +12,7 @@ class RutaController extends Controller
      */
     public function index()
     {
-        dd("Suena la alarma, seré furiosa");
+        return view('rutas.index');
     }
 
     /**

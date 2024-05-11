@@ -11,7 +11,7 @@
         </div>
 
         <div>
-            Comision: {{ $comision }} mxn.
+            Comisión: {{ $comision }} mxn.
         </div>
 
         <div>

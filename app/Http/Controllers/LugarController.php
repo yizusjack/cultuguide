@@ -58,8 +58,12 @@ class LugarController extends Controller
         $pictures = $lugar->imagenes;
 
         $costos = Costo::whereBelongsTo($lugar)->get();
+
+        $costosMercado = Costo::whereBelongsTo($lugar)->where('costo', '>', 0)->get();
+
+        //dd($costosMercado);
         
-        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos'));
+        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos', 'costosMercado'));
     }
 
     /**

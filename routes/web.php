@@ -9,6 +9,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\ExhibicionController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\MercadoPagoController;
 
 Route::get('/', function () {
     return view('landing.landing');
@@ -48,6 +49,19 @@ Route::resource('costos', CostoController::class);
 
 //Rutas para reclamos
 Route::resource('reclamo', ReclamoController::class);
+
+//RUtas para mercado pago
+Route::get('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
+    ->middleware('auth')
+    ->name('mercadopago.generarOrdenEntrada');
+
+Route::get('entrada/success', [MercadoPagoController::class, 'success'])
+    ->middleware('auth')
+    ->name('mercadopago.success');
+
+Route::get('entrada/failure', [MercadoPagoController::class, 'failure'])
+    ->middleware('auth')
+    ->name('mercadopago.failure');
 
 //Rutas para las  notificaciones
 Route::get('notification',

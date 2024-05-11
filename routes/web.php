@@ -50,8 +50,8 @@ Route::resource('costos', CostoController::class);
 //Rutas para reclamos
 Route::resource('reclamo', ReclamoController::class);
 
-//RUtas para mercado pago
-Route::get('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
+//Rutas para mercado pago
+Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
     ->middleware('auth')
     ->name('mercadopago.generarOrdenEntrada');
 

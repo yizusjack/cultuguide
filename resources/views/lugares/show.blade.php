@@ -79,7 +79,7 @@
 
                         @if($costosMercado->count() > 0)
                             <div class="m-1">
-                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="GET">
+                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="POST">
                                     @csrf
 
                                     <div>
@@ -103,7 +103,7 @@
                                 </form>
                             </div>
                         @endif
-                        
+
                     </div>
                 </div>
             </div>

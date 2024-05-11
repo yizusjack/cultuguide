@@ -27,7 +27,7 @@ class AllNotis extends Component
             $notification->save();
         }
         
-        return redirect()->route($notification->redirect_to, $notification->redirect_parameter);
+        return redirect()->route($notification->redirect_to, ['evento' => $notification->redirect_parameter]);
     }
 
     #[On('list')]

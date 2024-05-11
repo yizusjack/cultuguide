@@ -30,7 +30,7 @@
                             name="fecha_inicio"
                             label="Fecha de inicio: "
                             :value="$fecha_inicio"
-                            type="date"
+                            type="datetime-local"
                             required
                         />
                     </div>
@@ -40,7 +40,7 @@
                             name="fecha_fin"
                             label="Fecha de finalización: "
                             :value="$fecha_fin"
-                            type="date"
+                            type="datetime-local"
                             required
                         />
                     </div>

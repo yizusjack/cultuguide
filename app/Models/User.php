@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Evento;
+use App\Models\Comentario;
+use Laravel\Sanctum\HasApiTokens;
+use Laravel\Jetstream\HasProfilePhoto;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
-use App\Models\Comentario;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -67,7 +68,13 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function comentarios(){
+    public function comentarios()
+    {
         return $this->hasMany(Comentario::class, 'user_id');
+    }
+
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class);
     }
 }

@@ -76,30 +76,34 @@
                                 @endforeach
                             </tbody>
                           </table>
-                        <div class="m-1">
-                            <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="GET">
-                                @csrf
 
-                                <div>
-                                    <label for="costo_id">Seleccione el tipo de entrada:</label>
-                                    <select id="costo_id" name="costo_id" class="form-control">
-                                      @foreach ($costos as $costo)
-                                        <option value="{{ $costo->id }}"
-                                          @if ($loop->first)
-                                            selected
-                                          @endif
-                                        >
-                                          {{ $costo->categoria }}
-                                        </option>
-                                      @endforeach
-                                    </select>
-                                </div>
+                        @if($costosMercado->count() > 0)
+                            <div class="m-1">
+                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="GET">
+                                    @csrf
 
-                                <div class="flex justify-center">
-                                    <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
-                                </div>
-                            </form>
-                        </div>
+                                    <div>
+                                        <label for="costo_id">Seleccione el tipo de entrada:</label>
+                                        <select id="costo_id" name="costo_id" class="form-control">
+                                        @foreach ($costosMercado as $costo)
+                                            <option value="{{ $costo->id }}"
+                                            @if ($loop->first)
+                                                selected
+                                            @endif
+                                            >
+                                            {{ $costo->categoria }}
+                                            </option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

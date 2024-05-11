@@ -22,7 +22,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                
+
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -35,7 +35,7 @@
                     @else
                         <img src="{{asset('assets/imgs/nf.jpg') }}" style="width:100%; height: 250px; object-fit: contain;">
                     @endif
-                    
+
                 </div>
             </div>
 
@@ -76,6 +76,34 @@
                                 @endforeach
                             </tbody>
                           </table>
+
+                        @if($costosMercado->count() > 0)
+                            <div class="m-1">
+                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="GET">
+                                    @csrf
+
+                                    <div>
+                                        <label for="costo_id">Seleccione el tipo de entrada:</label>
+                                        <select id="costo_id" name="costo_id" class="form-control">
+                                        @foreach ($costosMercado as $costo)
+                                            <option value="{{ $costo->id }}"
+                                            @if ($loop->first)
+                                                selected
+                                            @endif
+                                            >
+                                            {{ $costo->categoria }}
+                                            </option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
+                        
                     </div>
                 </div>
             </div>
@@ -115,7 +143,7 @@
             <h2>
                 Exhibiciones en este lugar
             </h2>
-            
+
             <livewire:listados.exhibiciones-list
                 :lugar="$lugar"
             />
@@ -146,7 +174,7 @@
 
             navigator.geolocation.watchPosition(success, error);
 
-            
+
 
             function success(position){
                 const latitude = position.coords.latitude;

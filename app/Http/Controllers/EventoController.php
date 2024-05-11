@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Models\Lugar;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class EventoController extends Controller
 {

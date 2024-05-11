@@ -2,8 +2,6 @@
     title="{{$evento->nombre}}"
 >
 
-    <livewire:notificacion.crear/>
-
     <div class="text-center">
         <h1>{{ $evento->nombre }}</h1>
     </div>
@@ -31,9 +29,17 @@
                 <div class="card-title text-center">
                     Descripción del evento
                 </div>
+
                 <div>
                     {{ $evento->descripcion }}
                 </div>
+
+                <div class="text-center">
+                    <livewire:notificacion.crear
+                        :evento="$evento"
+                    />
+                </div>
+
             </div>
         </div>
     </div>

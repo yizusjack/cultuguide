@@ -29,6 +29,8 @@ class SendModiNotification extends Command
     {
         $users = User::role('admin')->get();
 
+        Notification::where('titulo', 'Recordatorio')->delete();
+
         foreach ($users as $user)
         {
             $notification = new Notification();

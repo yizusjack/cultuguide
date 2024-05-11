@@ -9,6 +9,15 @@
         <div>
             Precio: {{ $costo->costo }} mxn.
         </div>
+
+        <div>
+            Comision: {{ $comision }} mxn.
+        </div>
+
+        <div>
+            Total: {{ $costo->costo + $comision }} mxn.
+        </div>
+
         <div>
             Tipo de entrada: {{ $costo->categoria }}.
         </div>

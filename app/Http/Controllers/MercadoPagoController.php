@@ -17,6 +17,8 @@ class MercadoPagoController extends Controller
 
         $costo = Costo::findOrFail($request->costo_id);
 
+        $comision = $costo->costo * 0.05;
+
         // Sets access token from .env file.
         MercadoPagoConfig::setAccessToken(config('services.mercadopago.access_token'));
         // Sets enviroment to localhost for testing.
@@ -28,7 +30,7 @@ class MercadoPagoController extends Controller
                 array(
                     "title" => "Entrada: " . $costo->categoria,
                     "quantity" => 1,
-                    "unit_price" => floatval($costo->costo),
+                    "unit_price" => floatval($costo->costo + $comision),
                 )
             ),
             "back_urls" => [
@@ -38,7 +40,7 @@ class MercadoPagoController extends Controller
         ]);
 
 
-        return view('mercadopago.ordenEntrada', compact('costo', 'preference'));
+        return view('mercadopago.ordenEntrada', compact('costo', 'comision', 'preference'));
     }
 
     public function success(Request $request) {

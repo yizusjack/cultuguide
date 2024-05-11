@@ -26,7 +26,7 @@
                         <x-forms.normalInput
                             name="fecha_inicio"
                             label="Fecha de inicio: "
-                            type="date"
+                            type="datetime-local"
                             required
                         />
                     </div>
@@ -35,7 +35,7 @@
                         <x-forms.normalInput
                             name="fecha_fin"
                             label="Fecha de finalización: "
-                            type="date"
+                            type="datetime-local"
                             required
                         />
                     </div>

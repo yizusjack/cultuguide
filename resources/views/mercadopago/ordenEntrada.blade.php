@@ -7,15 +7,21 @@
 
     <div class="row">
         <div>
-            Precio: {{ $costo->costo }} mxn.
+            Precio: ${{ $costo->costo }} mxn.
         </div>
 
         <div>
-            Comisión: {{ $comision }} mxn.
+            Comisión: ${{ $comision }} mxn.
         </div>
 
+        @if ($descuento > 0.0)
+            <div>
+                Descuento: ${{ $descuento }} mxn.
+            </div>
+        @endif
+
         <div>
-            Total: {{ $costo->costo + $comision }} mxn.
+            Total: ${{ $costo_total }} mxn.
         </div>
 
         <div>

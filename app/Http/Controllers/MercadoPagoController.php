@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Costo;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use MercadoPago\MercadoPagoConfig;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\Exceptions\MPApiException;
@@ -19,32 +21,53 @@ class MercadoPagoController extends Controller
 
         $comision = $costo->costo * 0.05;
 
+        $descuento = Auth::user()->cupones == 3
+            ? $costo->costo * 0.5
+            : $costo->costo * 0;
+
+        $costo_total = ($costo->costo - $descuento) + $comision;
+
         // Sets access token from .env file.
         MercadoPagoConfig::setAccessToken(config('services.mercadopago.access_token'));
         // Sets enviroment to localhost for testing.
         MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
 
         $client = new PreferenceClient();
-        $preference = $client->create([
-            "items"=> array(
-                array(
-                    "title" => "Entrada: " . $costo->categoria,
-                    "quantity" => 1,
-                    "unit_price" => floatval($costo->costo + $comision),
-                )
-            ),
-            "back_urls" => [
-                'succes' => route('mercadopago.success'),
-                'failure' => route('mercadopago.failure'),
-            ],
-        ]);
+        try {
+            $preference = $client->create([
+                "items" => [
+                    [
+                        "title" => "Entrada: " . $costo->categoria,
+                        "quantity" => 1,
+                        "unit_price" => $costo_total,
+                    ]
+                ],
+                "back_urls" => [
+                    'success' => route('mercadopago.success'),
+                    'failure' => route('mercadopago.failure'),
+                ],
+                "auto_return" => 'approved',
+            ]);
+        }
+        catch (MPApiException $error) {
+            dump($error);
+            return redirect()->route('mercadopago.failure');
+        }
 
 
-        return view('mercadopago.ordenEntrada', compact('costo', 'comision', 'preference'));
+        return view('mercadopago.ordenEntrada', compact('costo', 'comision', 'descuento', 'costo_total', 'preference'));
     }
 
     public function success(Request $request) {
-        return 'Éxito al comprar entrada';
+        $user = User::find(Auth::user()->id);
+        if ($user->cupones == 3) {
+            $user->cupones = 0;
+        }
+        else {
+            $user->cupones += 1;
+        }
+        $user->save();
+        return redirect()->route('lugar.index');
     }
 
     public function failure(Request $request) {

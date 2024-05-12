@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Costo;
 use App\Models\Lugar;
@@ -41,6 +42,8 @@ class LugarController extends Controller
             'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
             'direccion' => ['required'],
             'municipios_id' => ['required', 'exists:municipios,id'],
+            'horario_apertura' => ['required', 'date_format:H:i'],
+            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'],
         ]);
 
         Lugar::create($request->all());
@@ -53,17 +56,20 @@ class LugarController extends Controller
      */
     public function show(Lugar $lugar)
     {
-        $mainPic = $lugar->imagenes->first();
 
         $pictures = $lugar->imagenes;
 
         $costos = Costo::whereBelongsTo($lugar)->get();
 
+        $horaAp = Carbon::parse($lugar->horario_apertura)->format('h:i A');
+
+        $horaCie = Carbon::parse($lugar->horario_cierre)->format('h:i A');
+        
         $costosMercado = Costo::whereBelongsTo($lugar)->where('costo', '>', 0)->get();
 
-        //dd($costosMercado);
         
-        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos', 'costosMercado'));
+        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie'));
+
     }
 
     /**
@@ -88,6 +94,8 @@ class LugarController extends Controller
             'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
             'direccion' => ['required'],
             'municipios_id' => ['required', 'exists:municipios,id'],
+            'horario_apertura' => ['required', 'date_format:H:i'],
+            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'], 
         ]);
         
         $lugar->update($request->except('_token', '_method'));

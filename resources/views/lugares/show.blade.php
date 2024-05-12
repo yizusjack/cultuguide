@@ -1,14 +1,16 @@
 <x-layout
     title="{{$lugar->nombre}}"
 >
-    <div class="m-3 p-3 space-y-12">
+    <div class="m-3 p-3">
         <div class="text-center">
             <h2>{{$lugar->nombre}}</h2>
         </div>
 
-        <livewire:acciones.acciones-lugar
+        <div class="mb-2">
+            <livewire:acciones.acciones-lugar
                 :lugar="$lugar"
             />
+        </div>
 
         <div class="row">
             <div class="col-md-4">
@@ -47,6 +49,10 @@
 
                     <div class="overflow-auto">
                         {!! nl2br($lugar->descripcion) !!}
+                    </div>
+
+                    <div class="mt-2">
+                        <b>Horario: </b> {{$horaAp}} a {{$horaCie}}
                     </div>
 
                 </div>

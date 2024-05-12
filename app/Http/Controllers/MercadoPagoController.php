@@ -50,7 +50,7 @@ class MercadoPagoController extends Controller
             ]);
         }
         catch (MPApiException $error) {
-            dd($error);
+            dump($error);
             return redirect()->route('mercadopago.failure');
         }
 

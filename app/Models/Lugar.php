@@ -25,6 +25,8 @@ class Lugar extends Model
         'longitud',
         'direccion',
         'municipios_id',
+        'horario_apertura',
+        'horario_cierre',
     ];
 
     public function municipios()

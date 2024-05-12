@@ -75,6 +75,27 @@
                         />
                     </div>
                 </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <x-forms.normalInput
+                            name="horario_apertura"
+                            label="Horario de Apertura: "
+                            type="time"
+                            :value="$lugar->horario_apertura"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <x-forms.normalInput
+                            name="horario_cierre"
+                            label="Horario de Cierre: "
+                            type="time"
+                            :value="$lugar->horario_cierre"
+                            required
+                        />
+                    </div>
+                </div>
 
                 <div class="flex justify-center">
                     <button type="submit" class="btn btn-success">Enviar</button>

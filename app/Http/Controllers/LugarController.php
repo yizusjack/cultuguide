@@ -41,6 +41,8 @@ class LugarController extends Controller
             'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
             'direccion' => ['required'],
             'municipios_id' => ['required', 'exists:municipios,id'],
+            'horario_apertura' => ['required', 'date_format:H:i'],
+            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'],
         ]);
 
         Lugar::create($request->all());
@@ -84,6 +86,8 @@ class LugarController extends Controller
             'longitud' => ['required', 'min:-180', 'max:180', 'decimal:0,6'],
             'direccion' => ['required'],
             'municipios_id' => ['required', 'exists:municipios,id'],
+            'horario_apertura' => ['required', 'date_format:H:i'],
+            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'], 
         ]);
         
         $lugar->update($request->except('_token', '_method'));

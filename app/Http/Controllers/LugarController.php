@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Costo;
 use App\Models\Lugar;
@@ -55,13 +56,16 @@ class LugarController extends Controller
      */
     public function show(Lugar $lugar)
     {
-        $mainPic = $lugar->imagenes->first();
 
         $pictures = $lugar->imagenes;
 
         $costos = Costo::whereBelongsTo($lugar)->get();
+
+        $horaAp = Carbon::parse($lugar->horario_apertura)->format('h:i A');
+
+        $horaCie = Carbon::parse($lugar->horario_cierre)->format('h:i A');
         
-        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos'));
+        return view('lugares.show', compact('lugar', 'pictures', 'costos', 'horaAp', 'horaCie'));
     }
 
     /**

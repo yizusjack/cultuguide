@@ -6,8 +6,10 @@ use App\Http\Controllers\CostoController;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\ExhibicionController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\MercadoPagoController;
 
 Route::get('/', function () {
     return view('landing.landing');
@@ -44,6 +46,22 @@ Route::resource('rutas', RutaController::class);
 
 //Rutas para los costos
 Route::resource('costos', CostoController::class);
+
+//Rutas para reclamos
+Route::resource('reclamo', ReclamoController::class);
+
+//Rutas para mercado pago
+Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
+    ->middleware('auth')
+    ->name('mercadopago.generarOrdenEntrada');
+
+Route::get('entrada/success', [MercadoPagoController::class, 'success'])
+    ->middleware('auth')
+    ->name('mercadopago.success');
+
+Route::get('entrada/failure', [MercadoPagoController::class, 'failure'])
+    ->middleware('auth')
+    ->name('mercadopago.failure');
 
 //Rutas para las  notificaciones
 Route::get('notification',

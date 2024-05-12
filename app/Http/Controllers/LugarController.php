@@ -65,7 +65,11 @@ class LugarController extends Controller
 
         $horaCie = Carbon::parse($lugar->horario_cierre)->format('h:i A');
         
-        return view('lugares.show', compact('lugar', 'pictures', 'costos', 'horaAp', 'horaCie'));
+        $costosMercado = Costo::whereBelongsTo($lugar)->where('costo', '>', 0)->get();
+
+        
+        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie'));
+
     }
 
     /**

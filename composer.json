@@ -12,6 +12,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
+        "mercadopago/dx-php": "^3.0",
         "rappasoft/laravel-livewire-tables": "^3.2",
         "spatie/laravel-permission": "^6.4"
     },

@@ -68,7 +68,7 @@ class LugarController extends Controller
         $costosMercado = Costo::whereBelongsTo($lugar)->where('costo', '>', 0)->get();
 
         
-        return view('lugares.show', compact('lugar', 'mainPic', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie'));
+        return view('lugares.show', compact('lugar', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie'));
 
     }
 

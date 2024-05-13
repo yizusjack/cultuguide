@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RutaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CostoController;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\ExhibicionController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\MercadoPagoController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('landing.landing');
@@ -67,4 +68,15 @@ Route::get('entrada/failure', [MercadoPagoController::class, 'failure'])
 Route::get('notification',
     [NotificationController::class, 'index'])
     ->name('notification.index')
+    ->middleware('auth');
+
+//Rutas para control de usuarios
+Route::get('user',
+    [UserController::class, 'index'])
+    ->name('user.index')
+    ->middleware('auth');
+
+Route::post('user/{user}/modify',
+    [UserController::class, 'modify'])
+    ->name('user.modify')
     ->middleware('auth');

@@ -24,6 +24,10 @@
 
         @if (! @isset(Auth::user()->email_verified_at))
             <div class="p-3">Email no verificado</div>
+        @else
+            <div class="p-3">
+              <i class='bi bi-patch-check-fill text-primary'></i>
+            </div>
         @endif  
         <div></div>
 

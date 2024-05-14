@@ -6,64 +6,9 @@
     <title>Publicación con Comentarios</title>
     <!-- Incluye Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <style>
-        .rating-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .rating {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-
-        .rating input {
-            display: none;
-        }
-
-        .rating label {
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            background-color: transparent;
-            background-image: url('https://cdn.jsdelivr.net/npm/font-awesome@5.15.4/css/fontawesome.min.css');
-            background-repeat: no-repeat;
-            margin-right: 5px;
-        }
-
-        .rating label:before {
-            content: "\f005";
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 30px;
-            color: #ccc;
-        }
-
-        .rating input:checked ~ label:before {
-            color: #ffcc00;
-        }
-
-        /* Estilos para el botón de reportar */
-        .report-button {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        /* Estilos para el formulario de reporte */
-        #reportForm {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            z-index: 999;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Template Main CSS File -->
+    <link href="{{asset('assets/template/css/style.css')}}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans">
 

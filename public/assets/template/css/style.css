@@ -1262,3 +1262,59 @@ h6 {
 .noti:hover{
   background-color: #61c587;
 }
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-image: url('https://cdn.jsdelivr.net/npm/font-awesome@5.15.4/css/fontawesome.min.css');
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+.rating label:before {
+  content: "\f005";
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rating input:checked ~ label:before {
+  color: #ffcc00;
+}
+
+/* Estilos para el botón de reportar */
+.report-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Estilos para el formulario de reporte */
+#reportForm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}

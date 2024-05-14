@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lugar;
 use App\Models\Reclamo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReclamoController extends Controller
 {
@@ -12,7 +14,7 @@ class ReclamoController extends Controller
      */
     public function index()
     {
-        dd("Suena la alarma, sere furiosa");
+        return view('reclamos.index');
     }
 
     /**
@@ -26,9 +28,14 @@ class ReclamoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Lugar $lugar)
     {
-        //
+        $request['lugares_id'] = $lugar->id;
+        $request['users_id'] = Auth::user()->id;
+
+        Reclamo::create($request->all());
+
+        return redirect()->route('lugar.show', $lugar);
     }
 
     /**

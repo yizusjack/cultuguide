@@ -53,7 +53,17 @@ Route::post('rutas/{lugar}/asignar', [RutaController::class, 'asignar'])
 Route::resource('costos', CostoController::class);
 
 //Rutas para reclamos
-Route::resource('reclamo', ReclamoController::class);
+Route::get('reclamo', 
+    [ReclamoController::class, 'index'])
+    ->name('reclamo.index')
+    ->middleware('auth');
+
+Route::post('reclamo/{lugar}/store', 
+    [ReclamoController::class, 'store'])
+    ->name('reclamo.store')
+    ->middleware('auth');
+
+
 
 //Rutas para mercado pago
 Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])

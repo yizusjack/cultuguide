@@ -197,6 +197,31 @@
             />
         </div>
 
+        <div class="row p-2">
+            <div class="card p-2">
+                <div class="card-title text-center">
+                    ¿La información no coincide?
+                </div>
+                <div>
+                    <form action="{{ route('reclamo.store', $lugar) }}" method="POST">
+                        @csrf
+
+                        <x-forms.textArea
+                            name="contenido"
+                            label="Deja tu reclamo"
+                            required
+                        />
+
+                        <div class="text-center m-2">
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                        </div>
+                    </form>
+
+                    <span>Tus reclamos nos ayudan a mejorar nuestro servicio</span>
+                </div>
+            </div>
+        </div>
+
         <livewire:comentarios :lugares_id="$lugar->id" />
 
     </div>

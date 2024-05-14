@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reclamos', function (Blueprint $table) {
             $table->id();
+            $table->text('contenido');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->foreignId('lugares_id')->constrained()->onDelete('cascade');
+            $table->boolean('issued')->default(0);
             $table->timestamps();
         });
     }

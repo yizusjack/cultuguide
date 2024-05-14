@@ -40,6 +40,8 @@ class ReclamoTable extends DataTableComponent
 
         $this->dispatch('list')->to('Notificacion.ShowNoti');
         $this->dispatch('list')->to('Notificacion.AllNotis');
+
+        $reclamo->delete();
     }
 
     public function columns(): array

@@ -137,10 +137,52 @@
                           <div x-show="! showMap" x-transition>
                             <div  class="m-3 p-3" style="height: 400px;">
                                 <h5>Rutas cercanas:</h5>
-                                <div>Lorem impsum</div>
+
+                                <div>
+                                    @if ($lugar->rutas()->count() > 0)
+                                    <ul class="list-group">
+                                        @foreach ($lugar->rutas as $ruta)
+                                            <li class="list-group-item">
+                                                {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    @else
+                                        No hay rutas ligadas
+                                    @endif
+                                </div>
                             </div>
                           </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="card">
+                <div class="card-title text-center">
+                    Administrar rutas
+                </div>
+
+                <div>
+                    <form class="row m-3" action="{{route('ruta.asignar', $lugar)}}" method="POST">
+                        @csrf
+                        <div class="col-12">
+                            <select name="ruta_id[]" class="form-select" multiple class="form-control">
+                                @foreach ($rutas as $ruta)
+                                    <option value="{{ $ruta->id }}"
+                                        @selected(array_search($ruta->id, $lugar->rutas()->pluck('rutas.id')->toArray()) !== false)
+                                    >
+                                        {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    
+                        <div class="text-center m-2">
+                          <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                      </form>
                 </div>
             </div>
         </div>

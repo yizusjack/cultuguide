@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Ruta;
 use App\Models\User;
 use App\Models\Costo;
 use App\Models\Lugar;
@@ -67,8 +68,10 @@ class LugarController extends Controller
         
         $costosMercado = Costo::whereBelongsTo($lugar)->where('costo', '>', 0)->get();
 
+        $rutas = Ruta::all();
+
         
-        return view('lugares.show', compact('lugar', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie'));
+        return view('lugares.show', compact('lugar', 'pictures', 'costos', 'costosMercado', 'horaAp', 'horaCie', 'rutas'));
 
     }
 

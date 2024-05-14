@@ -11,7 +11,6 @@
                     name="ruta_antigua"
                     label="Ruta Antigua: "
                     placeholder="Ingrese la ruta antigua"
-                    required
                 />
 
                 <x-forms.normalInput

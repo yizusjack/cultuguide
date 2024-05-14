@@ -45,6 +45,10 @@ Route::resource('evento', EventoController::class);
 //Rutas para las rutas de transporte
 Route::resource('rutas', RutaController::class);
 
+Route::post('rutas/{lugar}/asignar', [RutaController::class, 'asignar'])
+    ->middleware('auth')
+    ->name('ruta.asignar');
+
 //Rutas para los costos
 Route::resource('costos', CostoController::class);
 

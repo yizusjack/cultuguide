@@ -61,6 +61,7 @@ class Lugar extends Model
     {
         return $this->belongsToMany(Ruta::class);
     }
+    
     public function notification()
     {
         return $this->hasMany(Notification::class);

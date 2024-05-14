@@ -17,5 +17,6 @@
     <div>
         <livewire:listados.evento-table/>
     </div>
+    
 
 </x-layout>

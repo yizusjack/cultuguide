@@ -17,7 +17,7 @@ class Reclamo extends Model
         'lugares_id',
     ];
 
-    public function usuarios()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

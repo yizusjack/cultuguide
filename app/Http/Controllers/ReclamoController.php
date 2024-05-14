@@ -14,7 +14,7 @@ class ReclamoController extends Controller
      */
     public function index()
     {
-        dd("Suena la alarma, sere furiosa");
+        return view('reclamos.index');
     }
 
     /**

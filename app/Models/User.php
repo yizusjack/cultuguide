@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Evento;
+use App\Models\Reclamo;
 use App\Models\Comentario;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -76,5 +77,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function eventos()
     {
         return $this->belongsToMany(Evento::class);
+    }
+
+    public function reclamos()
+    {
+        return $this->hasMany(Reclamo::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Evento;
 use App\Models\Imagen;
+use App\Models\Reclamo;
 use App\Models\Municipio;
 use App\Models\Comentario;
 use App\Models\Exhibicion;
@@ -65,5 +66,10 @@ class Lugar extends Model
     public function notification()
     {
         return $this->hasMany(Notification::class);
+    }
+
+    public function reclamos()
+    {
+        return $this->hasMany(Reclamo::class);
     }
 }

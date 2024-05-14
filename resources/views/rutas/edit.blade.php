@@ -13,7 +13,6 @@
                     label="Ruta Antigua: "
                     placeholder="Ingrese la ruta antigua"
                     :value="$ruta->ruta_antigua"
-                    required
                 />
 
                 <x-forms.normalInput

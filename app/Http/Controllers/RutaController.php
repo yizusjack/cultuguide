@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ruta;
+use App\Models\Lugar;
 use Illuminate\Http\Request;
 
 class RutaController extends Controller
@@ -65,6 +66,13 @@ class RutaController extends Controller
     {
         $ruta->delete();
         return redirect()->route('rutas.index');
+    }
+
+    public function asignar(Request $request, Lugar $lugar)
+    {
+        $lugar->rutas()->sync($request->ruta_id);
+
+        return redirect()->route('lugar.show', $lugar);
     }
 }
     

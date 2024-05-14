@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('hola', function () {
-    return view('landing.registro');
+    return view('comentarios.comentarios');
 });
 
 Route::middleware([

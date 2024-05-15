@@ -11,12 +11,28 @@
             <form action="{{route('lugar.store')}}" method="POST">
                 @csrf
 
-                <x-forms.normalInput
-                    name="nombre"
-                    label="Nombre: "
-                    placeholder="Ingrese el nombre del lugar"
-                    required
-                />
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <x-forms.normalInput
+                            name="nombre"
+                            label="Nombre: "
+                            placeholder="Ingrese el nombre del lugar"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <x-forms.selectInput
+                            name="tag"
+                            label="Categoría: "
+                            placeholder="Seleccione una categoría"
+                            :options="$categorias"
+                            attributeName="value"
+                            required
+                        />
+                    </div>
+
+                </div>
 
                 <x-forms.textArea
                     name="descripcion"

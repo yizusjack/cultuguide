@@ -28,7 +28,26 @@ class LugarController extends Controller
     {
         $municipios = Municipio::all();
 
-        return view('lugares.create', compact('municipios'));
+        $categorias = collect([
+            [
+                'id' => 'Cultura',
+                'value' => 'Cultura'
+            ],
+            [
+                'id' => 'Arte',
+                'value' => 'Arte'
+            ],
+            [
+                'id' => 'Ciencias',
+                'value' => 'Ciencias'
+            ],
+            [
+                'id' => 'Historia',
+                'value' => 'Historia'
+            ],
+        ]);
+
+        return view('lugares.create', compact('municipios', 'categorias'));
     }
 
     /**
@@ -45,6 +64,7 @@ class LugarController extends Controller
             'municipios_id' => ['required', 'exists:municipios,id'],
             'horario_apertura' => ['required', 'date_format:H:i'],
             'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'],
+            'tag' => ['required'],
         ]);
 
         Lugar::create($request->all());
@@ -82,7 +102,26 @@ class LugarController extends Controller
     {
         $municipios = Municipio::all();
 
-        return view('lugares.edit', compact('lugar', 'municipios'));
+        $categorias = collect([
+            [
+                'id' => 'Cultura',
+                'value' => 'Cultura'
+            ],
+            [
+                'id' => 'Arte',
+                'value' => 'Arte'
+            ],
+            [
+                'id' => 'Ciencias',
+                'value' => 'Ciencias'
+            ],
+            [
+                'id' => 'Historia',
+                'value' => 'Historia'
+            ],
+        ]);
+
+        return view('lugares.edit', compact('lugar', 'municipios', 'categorias'));
     }
 
     /**
@@ -98,7 +137,8 @@ class LugarController extends Controller
             'direccion' => ['required'],
             'municipios_id' => ['required', 'exists:municipios,id'],
             'horario_apertura' => ['required', 'date_format:H:i'],
-            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'], 
+            'horario_cierre' => ['required', 'date_format:H:i', 'after:horario_apertura'],
+            'tag' => ['required'],
         ]);
         
         $lugar->update($request->except('_token', '_method'));

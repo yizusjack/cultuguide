@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Dato;
 use App\Models\Evento;
 use App\Models\Reclamo;
 use App\Models\Comentario;
@@ -82,5 +83,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reclamos()
     {
         return $this->hasMany(Reclamo::class);
+    }
+
+    public function datos()
+    {
+        return $this->hasOne(Dato::class);
     }
 }

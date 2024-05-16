@@ -8,13 +8,29 @@
                 @csrf
                 @method('PATCH')
 
-                <x-forms.normalInput
-                    name="nombre"
-                    label="Nombre: "
-                    placeholder="Ingrese el nombre del lugar"
-                    :value="$lugar->nombre"
-                    required
-                />
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <x-forms.normalInput
+                            name="nombre"
+                            label="Nombre: "
+                            placeholder="Ingrese el nombre del lugar"
+                            :value="$lugar->nombre"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <x-forms.selectInput
+                            name="tag"
+                            label="Categoría: "
+                            placeholder="Seleccione una categoría"
+                            :options="$categorias"
+                            attributeName="value"
+                            :selected="$lugar->tag"
+                            required
+                        />
+                    </div>
+                </div>
 
                 <x-forms.textArea
                     name="descripcion"

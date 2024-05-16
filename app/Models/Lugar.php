@@ -28,6 +28,7 @@ class Lugar extends Model
         'municipios_id',
         'horario_apertura',
         'horario_cierre',
+        'tag',
     ];
 
     public function municipios()

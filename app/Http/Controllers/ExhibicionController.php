@@ -13,7 +13,7 @@ class ExhibicionController extends Controller
      */
     public function index()
     {
-        //
+        return view('exhibiciones.index');
     }
 
     /**

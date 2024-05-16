@@ -91,6 +91,8 @@ class AddDatos extends Component
         $user->save();
 
         $this->display = false;
+
+        $this->dispatch('datos')->to('Listados.LugaresList');
     }
     
     public function render()

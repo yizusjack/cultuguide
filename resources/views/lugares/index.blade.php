@@ -5,6 +5,10 @@
         <h1>Lugares</h1>
     </div>
 
+    @auth
+        <livewire:acciones.add-datos/>
+    @endauth
+    
     <div class="row">
         <div class="text-right">
             <a href="{{ route('lugar.create') }}">

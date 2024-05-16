@@ -11,7 +11,7 @@ class Dato extends Model
     use HasFactory;
 
     protected $fillable = [
-        'edad',
+        'fecha_n',
         'ciudad',
         'presupuesto',
     ];

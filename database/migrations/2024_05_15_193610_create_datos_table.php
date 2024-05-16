@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('datos', function (Blueprint $table) {
             $table->id();
-            $table->string('edad');
+            $table->date('fecha_n');
             $table->string('ciudad');
             $table->string('presupuesto');
             $table->timestamps();
         });
 
-        Schema::table('lugares', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('datos_id')->nullable()->default(null);
             $table->foreign('datos_id')->references('id')->on('datos');
         });
@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('lugares', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['datos_id']);
 
             $table->dropColumn('datos_id');

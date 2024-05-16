@@ -6,11 +6,14 @@
             <h2>{{$lugar->nombre}}</h2>
         </div>
 
-        <div class="mb-2">
-            <livewire:acciones.acciones-lugar
-                :lugar="$lugar"
-            />
-        </div>
+        @can('create', App\Models\Lugar::class)
+            <div class="mb-2">
+                <livewire:acciones.acciones-lugar
+                    :lugar="$lugar"
+                />
+            </div>
+        @endcan
+        
 
         <div class="row">
             <div class="col-md-4">
@@ -158,34 +161,37 @@
             </div>
         </div>
 
-        <div class="row p-2">
-            <div class="card">
-                <div class="card-title text-center">
-                    Administrar rutas
-                </div>
+        @can('create', App\Models\Lugar::class)
+            <div class="row p-2">
+                <div class="card">
+                    <div class="card-title text-center">
+                        Administrar rutas
+                    </div>
 
-                <div>
-                    <form class="row m-3" action="{{route('ruta.asignar', $lugar)}}" method="POST">
-                        @csrf
-                        <div class="col-12">
-                            <select name="ruta_id[]" class="form-select" multiple class="form-control">
-                                @foreach ($rutas as $ruta)
-                                    <option value="{{ $ruta->id }}"
-                                        @selected(array_search($ruta->id, $lugar->rutas()->pluck('rutas.id')->toArray()) !== false)
-                                    >
-                                        {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    
-                        <div class="text-center m-2">
-                          <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                      </form>
+                    <div>
+                        <form class="row m-3" action="{{route('ruta.asignar', $lugar)}}" method="POST">
+                            @csrf
+                            <div class="col-12">
+                                <select name="ruta_id[]" class="form-select" multiple class="form-control">
+                                    @foreach ($rutas as $ruta)
+                                        <option value="{{ $ruta->id }}"
+                                            @selected(array_search($ruta->id, $lugar->rutas()->pluck('rutas.id')->toArray()) !== false)
+                                        >
+                                            {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        
+                            <div class="text-center m-2">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endcan
+        
 
         <div class="p-3">
             <h2>

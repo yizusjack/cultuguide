@@ -10,6 +10,7 @@ use App\Models\Lugar;
 use App\Models\Municipio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Gate;
 
 class LugarController extends Controller
 {
@@ -26,6 +27,8 @@ class LugarController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Lugar::class);
+        
         $municipios = Municipio::all();
 
         $categorias = collect([
@@ -55,6 +58,8 @@ class LugarController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Lugar::class);
+        
         $request->validate([
             'nombre' => ['required', 'max:255'],
             'descripcion' => ['required'],
@@ -100,6 +105,8 @@ class LugarController extends Controller
      */
     public function edit(Lugar $lugar)
     {
+        Gate::authorize('create', Lugar::class);
+
         $municipios = Municipio::all();
 
         $categorias = collect([
@@ -129,6 +136,8 @@ class LugarController extends Controller
      */
     public function update(Request $request, Lugar $lugar)
     {
+        Gate::authorize('create', Lugar::class);
+
         $request->validate([
             'nombre' => ['required', 'max:255'],
             'descripcion' => ['required'],
@@ -152,7 +161,8 @@ class LugarController extends Controller
      */
     public function destroy(Lugar $lugar)
     {
-        
+        Gate::authorize('create', Lugar::class);
+
         $lugar->delete();
 
         return redirect()->route('lugar.index');

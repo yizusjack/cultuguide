@@ -49,7 +49,9 @@ class ExhibicionController extends Controller
      */
     public function show(Exhibicion $exhibicion)
     {
-        return view('exhibiciones.show', compact('exhibicion'));
+        $pictures = $exhibicion->imagenes;
+
+        return view('exhibiciones.show', compact('exhibicion', 'pictures'));
     }
 
     /**

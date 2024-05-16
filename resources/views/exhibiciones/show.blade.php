@@ -6,6 +6,12 @@
     <h2>{{$exhibicion->nombre}}</h2>
 </div>
 
+<div class="mb-2">
+    <livewire:acciones.acciones-exhibicion
+        :exhibicion="$exhibicion"
+    />
+</div>
+
 <div class="row">
     <div class="card p-3">
         @if ($pictures->count() != 0)
@@ -72,15 +78,6 @@
     </div>
 </div>
 
-<div class="flex justify-center m-3">
-    <div class="text-center w-full">
-        <form action="{{route('imagen.store')}}" class="dropzone mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10" id="my-awesome-dropzone">
-            @csrf
-            <input type="hidden" name="imageable_id" id="imageable_id" value="{{$exhibicion->id}}">
-            <input type="hidden" name="imageable_type" id="imageable_type" value="{{get_class($exhibicion)}}">
-        </form>
-    </div>
-</div>
 
 @section('js')
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>

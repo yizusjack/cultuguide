@@ -59,6 +59,7 @@ Route::resource('costos', CostoController::class);
 Route::get('reclamo', 
     [ReclamoController::class, 'index'])
     ->name('reclamo.index')
+    ->middleware('can:viewAny,App\Models\Reclamo')
     ->middleware('auth');
 
 Route::post('reclamo/{lugar}/store', 

@@ -43,10 +43,13 @@ Route::resource('exhibicion', ExhibicionController::class);
 Route::resource('evento', EventoController::class);
 
 //Rutas para las rutas de transporte
-Route::resource('rutas', RutaController::class);
+Route::resource('rutas', RutaController::class)
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\Ruta');
 
 Route::post('rutas/{lugar}/asignar', [RutaController::class, 'asignar'])
     ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\Ruta')
     ->name('ruta.asignar');
 
 //Rutas para los costos
@@ -62,8 +65,6 @@ Route::post('reclamo/{lugar}/store',
     [ReclamoController::class, 'store'])
     ->name('reclamo.store')
     ->middleware('auth');
-
-
 
 //Rutas para mercado pago
 Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])

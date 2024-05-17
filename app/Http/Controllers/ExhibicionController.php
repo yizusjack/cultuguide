@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lugar;
 use App\Models\Exhibicion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ExhibicionController extends Controller
 {
@@ -21,6 +22,8 @@ class ExhibicionController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Exhibicion::class);
+        
         $lugares = Lugar::all();
         
         return view('exhibiciones.create', compact('lugares'));
@@ -31,6 +34,8 @@ class ExhibicionController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Exhibicion::class);
+        
         $request->validate([
             'nombre' => ['required', 'max:255'],
             'descripcion' => ['required'],
@@ -59,6 +64,8 @@ class ExhibicionController extends Controller
      */
     public function edit(Exhibicion $exhibicion)
     {
+        Gate::authorize('create', Exhibicion::class);
+        
         $lugares = Lugar::all();
         
         return view('exhibiciones.edit', compact('exhibicion', 'lugares'));
@@ -69,6 +76,8 @@ class ExhibicionController extends Controller
      */
     public function update(Request $request, Exhibicion $exhibicion)
     {
+        Gate::authorize('create', Exhibicion::class);
+        
         $request->validate([
             'nombre' => ['required', 'max:255'],
             'descripcion' => ['required'],
@@ -87,6 +96,8 @@ class ExhibicionController extends Controller
      */
     public function destroy(Exhibicion $exhibicion)
     {
+        Gate::authorize('create', Exhibicion::class);
+        
         $exhibicion->delete();
 
         return redirect()->route('exhibicion.index');

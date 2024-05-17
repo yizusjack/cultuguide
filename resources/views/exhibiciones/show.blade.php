@@ -6,11 +6,13 @@
     <h2>{{$exhibicion->nombre}}</h2>
 </div>
 
-<div class="mb-2">
-    <livewire:acciones.acciones-exhibicion
-        :exhibicion="$exhibicion"
-    />
-</div>
+@can('create', App\Models\Exhibicion::class)
+    <div class="mb-2">
+        <livewire:acciones.acciones-exhibicion
+            :exhibicion="$exhibicion"
+        />
+    </div>
+@endcan
 
 <div class="row">
     <div class="card p-3">

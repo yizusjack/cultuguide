@@ -6,13 +6,15 @@
         <h1>Exhibiciones</h1>
     </div>
 
-    <div class="row">
-        <div class="text-right">
-            <a href="{{ route('exhibicion.create') }}">
-                <button class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Nueva exhibicion</button>
-            </a>
+    @can('create', App\Models\Exhibicion::class)
+        <div class="row">
+            <div class="text-right">
+                <a href="{{ route('exhibicion.create') }}">
+                    <button class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Nueva exhibicion</button>
+                </a>
+            </div>
         </div>
-    </div>
+    @endcan
 
     <div>
         <livewire:listados.exhibicion-list/>

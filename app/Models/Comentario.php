@@ -27,4 +27,9 @@ class Comentario extends Model
     {
         return $this->belongsTo(Lugar::class, 'lugares_id');
     }
+
+    public function reports()
+    {
+        return $this->belongsToMany(User::class, 'comment_reports', 'comment_id', 'user_id');
+    }
 }

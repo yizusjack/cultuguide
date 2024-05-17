@@ -89,4 +89,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Dato::class);
     }
+
+    public function reportedComments()
+    {
+        return $this->belongsToMany(Comentario::class, 'comment_reports', 'user_id', 'comment_id');
+    }
 }

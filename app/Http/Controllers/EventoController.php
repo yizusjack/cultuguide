@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Lugar;
 use App\Models\Evento;
 use Illuminate\Http\Request;
-use App\Models\Lugar;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 class EventoController extends Controller
 {
@@ -24,6 +25,8 @@ class EventoController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Evento::class);
+
         $lugares = Lugar::all();
 
         return view('eventos.create', compact('lugares'));
@@ -34,6 +37,8 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Evento::class);
+
         $fecha_inicio = $request->input('fecha_inicio');
 
         $request->validate([
@@ -64,6 +69,8 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
+        Gate::authorize('create', Evento::class);
+        
         $lugares = Lugar::all();
 
         $fecha_inicio_sql = $evento->fecha_inicio;
@@ -80,6 +87,8 @@ class EventoController extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
+        Gate::authorize('create', Evento::class);
+        
         $fecha_inicio = $request->input('fecha_inicio');
 
         $request->validate([
@@ -100,6 +109,8 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
+        Gate::authorize('create', Evento::class);
+        
         $evento->delete();
 
         return redirect()->route('evento.index');

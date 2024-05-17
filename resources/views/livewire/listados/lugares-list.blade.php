@@ -1,13 +1,13 @@
 <div>
     
         @auth
-            @if (Auth::user()->datos_id != null)
+            @can ('viewRecs', App\Models\Lugar::class)
                 <div class="row">
                     <div class="col">
                         <button wire:click="cambiar" type="button" class="btn btn-info">{{$recomendaciones == true ? 'Ver todos' : 'Ver recomendaciones'}}</button>
                     </div>
                 </div>
-            @endif
+            @endcan
         @endauth
     
 

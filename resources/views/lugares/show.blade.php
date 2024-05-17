@@ -6,11 +6,14 @@
             <h2>{{$lugar->nombre}}</h2>
         </div>
 
-        <div class="mb-2">
-            <livewire:acciones.acciones-lugar
-                :lugar="$lugar"
-            />
-        </div>
+        @can('create', App\Models\Lugar::class)
+            <div class="mb-2">
+                <livewire:acciones.acciones-lugar
+                    :lugar="$lugar"
+                />
+            </div>
+        @endcan
+        
 
         <div class="row">
             <div class="col-md-4">
@@ -83,33 +86,44 @@
                             </tbody>
                           </table>
 
-                        @if($costosMercado->count() > 0)
-                            <div class="m-1">
-                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="POST">
-                                    @csrf
+                        @can('buy', App\Models\Lugar::class)
+                            @if($costosMercado->count() > 0)
+                                <div class="m-1">
+                                    <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="POST">
+                                        @csrf
 
-                                    <div>
-                                        <label for="costo_id">Seleccione el tipo de entrada:</label>
-                                        <select id="costo_id" name="costo_id" class="form-control">
-                                        @foreach ($costosMercado as $costo)
-                                            <option value="{{ $costo->id }}"
-                                            @if ($loop->first)
-                                                selected
-                                            @endif
-                                            >
-                                            {{ $costo->categoria }}
-                                            </option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                        <div>
+                                            <label for="costo_id">Seleccione el tipo de entrada:</label>
+                                            <select id="costo_id" name="costo_id" class="form-control">
+                                            @foreach ($costosMercado as $costo)
+                                                <option value="{{ $costo->id }}"
+                                                @if ($loop->first)
+                                                    selected
+                                                @endif
+                                                >
+                                                {{ $costo->categoria }}
+                                                </option>
+                                            @endforeach
+                                            </select>
+                                        </div>
 
-                                    <div class="flex justify-center">
-                                        <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
-                                    </div>
-                                </form>
-                            </div>
-                        @endif
-
+                                        <div class="flex justify-center">
+                                            <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
+                        @else
+                            @auth
+                                <div class="m-1">
+                                    Verifica tu email para poder comprar entradas
+                                </div>
+                            @endauth
+                            @guest
+                                Inicia sesión o regístrate para poder comprar entradas
+                            @endguest
+                        @endcan
+                        
                     </div>
                 </div>
             </div>
@@ -158,34 +172,37 @@
             </div>
         </div>
 
-        <div class="row p-2">
-            <div class="card">
-                <div class="card-title text-center">
-                    Administrar rutas
-                </div>
+        @can('create', App\Models\Lugar::class)
+            <div class="row p-2">
+                <div class="card">
+                    <div class="card-title text-center">
+                        Administrar rutas
+                    </div>
 
-                <div>
-                    <form class="row m-3" action="{{route('ruta.asignar', $lugar)}}" method="POST">
-                        @csrf
-                        <div class="col-12">
-                            <select name="ruta_id[]" class="form-select" multiple class="form-control">
-                                @foreach ($rutas as $ruta)
-                                    <option value="{{ $ruta->id }}"
-                                        @selected(array_search($ruta->id, $lugar->rutas()->pluck('rutas.id')->toArray()) !== false)
-                                    >
-                                        {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    
-                        <div class="text-center m-2">
-                          <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                      </form>
+                    <div>
+                        <form class="row m-3" action="{{route('ruta.asignar', $lugar)}}" method="POST">
+                            @csrf
+                            <div class="col-12">
+                                <select name="ruta_id[]" class="form-select" multiple class="form-control">
+                                    @foreach ($rutas as $ruta)
+                                        <option value="{{ $ruta->id }}"
+                                            @selected(array_search($ruta->id, $lugar->rutas()->pluck('rutas.id')->toArray()) !== false)
+                                        >
+                                            {{$ruta->ruta_actual}} {{ $ruta->ruta_antigua != '-' ? '(' . $ruta->ruta_antigua . ')' : '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        
+                            <div class="text-center m-2">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endcan
+        
 
         <div class="p-3">
             <h2>
@@ -197,30 +214,32 @@
             />
         </div>
 
-        <div class="row p-2">
-            <div class="card p-2">
-                <div class="card-title text-center">
-                    ¿La información no coincide?
-                </div>
-                <div>
-                    <form action="{{ route('reclamo.store', $lugar) }}" method="POST">
-                        @csrf
+        @auth
+            <div class="row p-2">
+                <div class="card p-2">
+                    <div class="card-title text-center">
+                        ¿La información no coincide?
+                    </div>
+                    <div>
+                        <form action="{{ route('reclamo.store', $lugar) }}" method="POST">
+                            @csrf
 
-                        <x-forms.textArea
-                            name="contenido"
-                            label="Deja tu reclamo"
-                            required
-                        />
+                            <x-forms.textArea
+                                name="contenido"
+                                label="Deja tu reclamo"
+                                required
+                            />
 
-                        <div class="text-center m-2">
-                            <button type="submit" class="btn btn-success">Enviar</button>
-                        </div>
-                    </form>
+                            <div class="text-center m-2">
+                                <button type="submit" class="btn btn-success">Enviar</button>
+                            </div>
+                        </form>
 
-                    <span>Tus reclamos nos ayudan a mejorar nuestro servicio</span>
+                        <span>Tus reclamos nos ayudan a mejorar nuestro servicio</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endauth
 
         <livewire:comentarios :lugares_id="$lugar->id" />
 

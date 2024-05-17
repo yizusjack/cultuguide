@@ -28,7 +28,7 @@ class ExhibicionList extends DataTableComponent
                 ->sortable(),
             LinkColumn::make('Nombre', 'nombre')
                 ->title(fn($row) => $row->nombre)
-                ->location(fn($row) => route('evento.show', $row->id)),
+                ->location(fn($row) => route('exhibicion.show', $row->id)),
             Column::make("Descripcion", "descripcion")
                 ->searchable()
                 ->collapseAlways()

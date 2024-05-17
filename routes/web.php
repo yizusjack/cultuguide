@@ -43,10 +43,13 @@ Route::resource('exhibicion', ExhibicionController::class);
 Route::resource('evento', EventoController::class);
 
 //Rutas para las rutas de transporte
-Route::resource('rutas', RutaController::class);
+Route::resource('rutas', RutaController::class)
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\Ruta');
 
 Route::post('rutas/{lugar}/asignar', [RutaController::class, 'asignar'])
     ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\Ruta')
     ->name('ruta.asignar');
 
 //Rutas para los costos
@@ -63,19 +66,20 @@ Route::post('reclamo/{lugar}/store',
     ->name('reclamo.store')
     ->middleware('auth');
 
-
-
 //Rutas para mercado pago
 Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.generarOrdenEntrada');
 
 Route::get('entrada/success', [MercadoPagoController::class, 'success'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.success');
 
 Route::get('entrada/failure', [MercadoPagoController::class, 'failure'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.failure');
 
 //Rutas para las  notificaciones
@@ -88,9 +92,11 @@ Route::get('notification',
 Route::get('user',
     [UserController::class, 'index'])
     ->name('user.index')
-    ->middleware('auth');
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\User');
 
 Route::post('user/{user}/modify',
     [UserController::class, 'modify'])
     ->name('user.modify')
-    ->middleware('auth');
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\User');

@@ -34,11 +34,13 @@
                     {{ $evento->descripcion }}
                 </div>
 
-                <div class="text-center">
-                    <livewire:notificacion.crear
-                        :evento="$evento"
-                    />
-                </div>
+                @can('assignEvento', $evento)
+                    <div class="text-center">
+                        <livewire:notificacion.crear
+                            :evento="$evento"
+                        />
+                    </div>
+                @endcan
 
             </div>
         </div>

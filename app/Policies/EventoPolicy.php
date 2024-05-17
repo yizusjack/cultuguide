@@ -17,35 +17,8 @@ class EventoPolicy
         return $user->hasRole('admin');
     }
 
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, Evento $evento): bool
+    public function assignEvento(User $user, Evento $evento): bool
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, Evento $evento): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Evento $evento): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Evento $evento): bool
-    {
-        //
+        return $user->email_verified_at != null;
     }
 }

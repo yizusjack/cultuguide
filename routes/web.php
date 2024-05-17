@@ -88,9 +88,11 @@ Route::get('notification',
 Route::get('user',
     [UserController::class, 'index'])
     ->name('user.index')
-    ->middleware('auth');
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\User');
 
 Route::post('user/{user}/modify',
     [UserController::class, 'modify'])
     ->name('user.modify')
-    ->middleware('auth');
+    ->middleware('auth')
+    ->middleware('can:viewAny,App\Models\User');

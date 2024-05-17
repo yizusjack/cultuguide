@@ -86,33 +86,44 @@
                             </tbody>
                           </table>
 
-                        @if($costosMercado->count() > 0)
-                            <div class="m-1">
-                                <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="POST">
-                                    @csrf
+                        @can('buy', App\Models\Lugar::class)
+                            @if($costosMercado->count() > 0)
+                                <div class="m-1">
+                                    <form class="space-y-6" action="{{ route('mercadopago.generarOrdenEntrada') }}" method="POST">
+                                        @csrf
 
-                                    <div>
-                                        <label for="costo_id">Seleccione el tipo de entrada:</label>
-                                        <select id="costo_id" name="costo_id" class="form-control">
-                                        @foreach ($costosMercado as $costo)
-                                            <option value="{{ $costo->id }}"
-                                            @if ($loop->first)
-                                                selected
-                                            @endif
-                                            >
-                                            {{ $costo->categoria }}
-                                            </option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                        <div>
+                                            <label for="costo_id">Seleccione el tipo de entrada:</label>
+                                            <select id="costo_id" name="costo_id" class="form-control">
+                                            @foreach ($costosMercado as $costo)
+                                                <option value="{{ $costo->id }}"
+                                                @if ($loop->first)
+                                                    selected
+                                                @endif
+                                                >
+                                                {{ $costo->categoria }}
+                                                </option>
+                                            @endforeach
+                                            </select>
+                                        </div>
 
-                                    <div class="flex justify-center">
-                                        <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
-                                    </div>
-                                </form>
-                            </div>
-                        @endif
-
+                                        <div class="flex justify-center">
+                                            <button type="submit" class="btn btn-success flex-fill">Proceder al cobro</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
+                        @else
+                            @auth
+                                <div class="m-1">
+                                    Verifica tu email para poder comprar entradas
+                                </div>
+                            @endauth
+                            @guest
+                                Inicia sesión o regístrate para poder comprar entradas
+                            @endguest
+                        @endcan
+                        
                     </div>
                 </div>
             </div>

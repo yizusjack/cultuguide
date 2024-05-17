@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Costo;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Costo;
+use Illuminate\Http\Request;
 use MercadoPago\MercadoPagoConfig;
-use MercadoPago\Client\Preference\PreferenceClient;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use MercadoPago\Exceptions\MPApiException;
+use MercadoPago\Client\Preference\PreferenceClient;
 
 class MercadoPagoController extends Controller
 {
     public function generarOrdenEntrada(Request $request) {
+
         $request->validate([
             'costo_id' => 'required'
         ]);

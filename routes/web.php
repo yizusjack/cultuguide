@@ -68,14 +68,17 @@ Route::post('reclamo/{lugar}/store',
 //Rutas para mercado pago
 Route::post('entrada', [MercadoPagoController::class, 'generarOrdenEntrada'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.generarOrdenEntrada');
 
 Route::get('entrada/success', [MercadoPagoController::class, 'success'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.success');
 
 Route::get('entrada/failure', [MercadoPagoController::class, 'failure'])
     ->middleware('auth')
+    ->middleware('can:buy,App\Models\Lugar')
     ->name('mercadopago.failure');
 
 //Rutas para las  notificaciones

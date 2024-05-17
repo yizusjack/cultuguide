@@ -47,6 +47,27 @@ class Comentarios extends Component
         $this->comments = Comentario::where('lugares_id', $this->lugares_id)->get();
     }
 
+    public $reportMessages = [];
+
+    public function reportComment($commentId)
+    {
+        $user = auth()->user();
+        $comment = Comentario::findOrFail($commentId);
+
+        if (!$user->reportedComments->contains($comment)) {
+            $user->reportedComments()->attach($comment);
+            $this->reportMessages[$commentId] = 'Comment reported successfully.';
+            
+            $reportsCount = $comment->reports()->count();
+            if ($reportsCount >= 3) {
+                $comment->delete();
+                // Notificacion
+            }
+        } else {
+            $this->reportMessages[$commentId] = 'You have already reported this comment.';
+        }
+    }
+
     public function render()
     {
         return view('livewire.comentarios');
